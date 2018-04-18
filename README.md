@@ -3,8 +3,9 @@
 #### Autocomplete provider based on atom [autocomplete+](https://atom.io/packages/autocomplete) package
 
 - Provides automatic path suggestions at writing either self (**./**) or parent(**../**) directory location.
-- Can be configured to offer path suggestions only when pressing (**_ctrl_ _+_ _space_**) shortcut. Disabled by default.
-- Exports following configuration settings to config.cson file:  
+- Configurable path suggestions when pressing (**_ctrl_ _+_ _space_**) shortcut. Disabled by default.
+- Exports following configuration settings to config.cson file:
+    - manual-suggest: _"Manual"_ path suggestions only when pressing (**_ctrl_ _+_ _space_**) shortcut.
 
 ```json
     "atom-path-intellisense"
