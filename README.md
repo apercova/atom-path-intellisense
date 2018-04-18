@@ -17,8 +17,8 @@ Autocomplete provider based on atom [autocomplete+](https://atom.io/packages/aut
       "manual-suggest" : false
 ```
 ### Examples
-![](https://github.com/apercova/atom-path-intellisense/blob/master/img/atom-pi-01.png?raw=true)  
+![](https://github.com/apercova/atom-path-intellisense/blob/master/img/pi-01.png?raw=true)  
 
-![](https://github.com/apercova/atom-path-intellisense/blob/master/img/atom-pi-02.png?raw=true)
+![](https://github.com/apercova/atom-path-intellisense/blob/master/img/pi-02.png?raw=true)
 
-![](https://github.com/apercova/atom-path-intellisense/blob/master/img/atom-pi-03.png?raw=true)
+![](https://github.com/apercova/atom-path-intellisense/blob/master/img/pi-03.png?raw=true)
