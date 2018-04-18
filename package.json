@@ -6,11 +6,11 @@
   "keywords": [
     "path",
     "paths",
+    "autocomplete",
+    "autocomplete-+",
+    "autocomplete-plus",
     "intellisense",
-    "path-suggestion",
-    "path-intellisense",
-    "file",
-    "directory"
+    "path-intellisense"
   ],
   "activationCommands": {},
   "repository": "https://github.com/apercova/atom-path-intellisense",
