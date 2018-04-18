@@ -1,0 +1,25 @@
+{
+  "name": "atom-path-intellisense",
+  "main": "./lib/main",
+  "version": "0.0.0",
+  "description": "Path intellisense support for atom",
+  "keywords": [
+    "path", "paths", "intellisense", "path-suggestion", "path-intellisense",
+    "file", "directory"
+  ],
+  "activationCommands": {},
+  "repository": "https://github.com/apercova/atom-path-intellisense",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+  },
+  "providedServices": {
+    "autocomplete.provider": {
+      "versions": {
+        "4.0.0": "provide"
+      }
+    }
+  }
+}
