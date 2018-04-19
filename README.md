@@ -25,7 +25,7 @@ See: [Scope Descriptors](https://flight-manual.atom.io/behind-atom/sections/scop
 ```cson
 "*":
   "atom-path-intellisense":
-    "manual-suggest": "true"
+    "manual-suggest": "false"
     "scope-descriptors": [
       "string.quoted.single"
       "string.quoted.double"
