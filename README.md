@@ -1,6 +1,6 @@
 # atom-path-intellisense
 ## Path Intellisense support for atom.  
-Autocomplete provider based on atom [autocomplete+](https://atom.io/packages/autocomplete) package
+Autocomplete provider based on atom [autocomplete-plus](https://atom.io/packages/autocomplete-plus) package
 
 ### Features
 - Provides path suggestions based on typed path.
