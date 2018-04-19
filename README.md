@@ -31,6 +31,7 @@ See: [Scope Descriptors](https://flight-manual.atom.io/behind-atom/sections/scop
       "string.quoted.double"
     ]
 ```
+
 ### Screenshots
 ![](https://github.com/apercova/atom-path-intellisense/blob/master/img/pi-01.png?raw=true)  
 
