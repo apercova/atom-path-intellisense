@@ -7,10 +7,9 @@
     "path",
     "paths",
     "autocomplete",
-    "autocomplete-+",
-    "autocomplete-plus",
-    "intellisense",
-    "path-intellisense"
+    "suggestion",
+    "suggestions",
+    "intellisense"
   ],
   "activationCommands": {},
   "repository": "https://github.com/apercova/atom-path-intellisense",
