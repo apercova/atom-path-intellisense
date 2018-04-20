@@ -6,7 +6,7 @@ Autocomplete provider based on atom [autocomplete-plus](https://atom.io/packages
 - Provides path suggestions based on typed path.
 - Current file relative path suggestions are provided typing either self (**./**) or parent(**../**) directory location.
 - Project folder relative path suggestions are provided typing forward slash (**/**).
-- By default, suggestions are provided at typing, but it's also possible to configure suggestions to be provided only by pressing (**_ctrl_ + _space_**) shortcut by setting  **manual-suggest** configuration parameter on true.
+- By default, suggestions are provided at typing, but it's also possible to configure them to be provided only by pressing (**_ctrl_ + _space_**) shortcut by setting  **manual-suggest** configuration parameter on true.
 - By default suggestions are provided within quoted strings both single and double.  
 It´s possible to configure different scope descriptors in **scope-descriptors** configuration parameter.
 
@@ -33,8 +33,8 @@ See: [Scope Descriptors](https://flight-manual.atom.io/behind-atom/sections/scop
 ```
 
 ### Screenshots
-![](https://github.com/apercova/atom-path-intellisense/blob/master/img/pi-01.png?raw=true)  
+![](https://github.com/apercova/imageio/blob/master/atom-path-intellisense/pi-01.png?raw=true)  
 
-![](https://github.com/apercova/atom-path-intellisense/blob/master/img/pi-02.png?raw=true)
+![](https://github.com/apercova/imageio/blob/master/atom-path-intellisense/pi-02.png?raw=true)
 
-![](https://github.com/apercova/atom-path-intellisense/blob/master/img/pi-03.png?raw=true)
+![](https://github.com/apercova/imageio/blob/master/atom-path-intellisense/pi-03.png?raw=true)
