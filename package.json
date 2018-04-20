@@ -1,7 +1,7 @@
 {
   "name": "atom-path-intellisense",
   "main": "./lib/main",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Path intellisense support for atom",
   "keywords": [
     "path",
