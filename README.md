@@ -1,4 +1,4 @@
-# atom-path-intellisense
+# [atom-path-intellisense](https://atom.io/packages/atom-path-intellisense)
 ## Path Intellisense support for atom.  
 Autocomplete provider based on atom [autocomplete-plus](https://atom.io/packages/autocomplete-plus) package
 
@@ -10,6 +10,12 @@ Autocomplete provider based on atom [autocomplete-plus](https://atom.io/packages
 - Suggestions are provided within quoted strings both single and double by default.  
 It´s possible to configure different scope descriptors in **scope-descriptors** configuration parameter.  
 - Escaping of single quotes is allowed within single-quoted strings.
+
+### Installation
+Install from atom´s **_settings/packages_** tab or run following command on a terminal:
+```bash
+  apm install atom-path-intellisense
+```
 
 ### Configuration
 This package exports following configuration settings to **config.cson** file:  
