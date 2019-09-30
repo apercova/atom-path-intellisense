@@ -1,2 +1,2 @@
 import path from "./dir1/dir2/path.js";
-import path from "./nom";
+import path from "./nom con espacio.txt";
