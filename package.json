@@ -17,7 +17,9 @@
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "winston": "^3.2.1"
+  },
   "providedServices": {
     "autocomplete.provider": {
       "versions": {
