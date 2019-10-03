@@ -18,6 +18,9 @@
     "atom": ">=1.0.0 <2.0.0"
   },
   "dependencies": {
+    "atom-slick": "^2.0.0",
+    "selector-kit": "^0.1.0",
+    "underscore-plus": "^1.7.0",
     "winston": "^3.2.1"
   },
   "providedServices": {
