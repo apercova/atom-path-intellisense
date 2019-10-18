@@ -1,6 +1,11 @@
 # [atom-path-intellisense](https://atom.io/packages/atom-path-intellisense)
 ## Path Intellisense support for atom.  
-Autocomplete provider based on atom [autocomplete-plus](https://atom.io/packages/autocomplete-plus) package.
+Autocomplete provider based on atom [autocomplete-plus](https://atom.io/packages/autocomplete-plus) package.  
+
+#### Current build status
+| Linux & MacOS | Windows  |
+|---------------|----------|
+| [![Build Status](https://travis-ci.org/apercova/atom-path-intellisense.svg?branch=atom-ci)](https://travis-ci.org/apercova/atom-path-intellisense)        | [![Build status](https://ci.appveyor.com/api/projects/status/i39dfbmxa9usjqa1/branch/atom-ci?svg=true)](https://ci.appveyor.com/project/apercova/atom-path-intellisense/branch/atom-ci) |
 
 ### Features
 - Provides path suggestions based on typed path.
