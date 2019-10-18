@@ -27,8 +27,8 @@ notifications:
 
 branches:
   only:
-    - master
     - atom-ci
+    - release-1.2.0
 
 git:
   depth: 10
