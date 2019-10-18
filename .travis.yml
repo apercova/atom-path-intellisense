@@ -2,9 +2,8 @@
 language: generic
 
 env:
-  - APM_TEST_PACKAGES="autocomplete-plus"
   global:
-    - APM_TEST_PACKAGES=""
+    - APM_TEST_PACKAGES="autocomplete-plus"
     - ATOM_LINT_WITH_BUNDLED_NODE="true"
 
   matrix:
