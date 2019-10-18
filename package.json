@@ -29,5 +29,9 @@
         "4.0.0": "getProvider"
       }
     }
+  },
+  "devDependencies": {
+    "eslint": "^6.5.1",
+    "prettier": "^1.18.2"
   }
 }
