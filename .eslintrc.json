@@ -7,6 +7,13 @@
     "extends": "eslint:recommended",
     "globals": {
         "atom": "readonly",
+        "describe": "readonly",
+        "jasmine": "readonly",
+        "beforeEach": "readonly",
+        "it": "readonly",
+        "waitsForPromise": "readonly",
+        "runs": "readonly",
+        "expect": "readonly",
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly"
     },
