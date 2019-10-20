@@ -37,7 +37,7 @@ describe(consts['PACKAGE_NAME'], () => {
             Promise.all([
                 atom.workspace
                     .open(
-                        path.join(process.cwd(), 'test', 'files', 'sample.js')
+                        path.join(process.cwd(), 'assets', 'files', 'sample.js')
                     )
                     .then(e => editor = e),
                 atom.packages.activatePackage('language-javascript'),
@@ -159,7 +159,7 @@ describe(consts['PACKAGE_NAME'], () => {
         let xmlEditor;
         waitsForPromise(() =>
             atom.workspace
-                .open(path.join(process.cwd(), 'test', 'files', 'sample.xml'))
+                .open(path.join(process.cwd(), 'assets', 'files', 'sample.xml'))
                 .then(e => {
                     xmlEditor = e;
                     xmlEditor.setText('<root path="./"></root>');
