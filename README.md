@@ -46,7 +46,7 @@ Decoupling path suggestion mechanism from autocomplete-plus provider API gives t
 
 > As extended providers we refer to providers targeted to a specific language or more specific scope selectors and/or context.
 
-Basically a extended provider has to be in compliance with the following:
+An extended provider has to be in compliance with the following:
 - Extend base class `BasePathProvider`.  
 - Implement following methods:
   - `canResolve()`
@@ -79,31 +79,30 @@ Install from atom´s **_settings/packages_** tab or run following command on a t
 
 ### Configuration
 This package exports following configuration settings to **config.cson** file:  
-- **manual-suggest**  
-  > if enabled (**recomended**), suggestions are shown by pressing `ctrl` + `space` shortcut. Uncheck to get suggestions at typing.   
-  - Type:    `boolean`
-  - Default: `false`
+##### manual-suggest
+> if enabled (**recomended**), suggestions are shown by pressing `ctrl` + `space` shortcut. Uncheck to get suggestions at typing.   
+- Type:    `boolean`
+- Default: `false`
 
-- **scope-descriptors**  
-  > [Scope selectors](https://flight-manual.atom.io/behind-atom/sections/scoped-settings-scopes-and-scope-descriptors/) (__can be comma-  separated__) for which suggestions are shown. Apply to current file's relative-path suggestion providers. Other providers specify more specific selectors.  
+##### scope-descriptors
+> [Scope selectors](https://flight-manual.atom.io/behind-atom/sections/scoped-settings-scopes-and-scope-descriptors/) (__can be comma-  separated__) for which suggestions are shown. Apply to current file's relative-path suggestion providers. Other providers specify more specific selectors.  
 See: [Scope Selectors Reference](https://flight-manual.atom.io/behind-atom/sections/scoped-settings-scopes-and-scope-descriptors/#scope-selectors)  
-  - Type:    `string`
-  - Default: `'.source .string, .source.shell, .text .string, .text.html.basic'`
+- Type:    `string`
+- Default: `'.source .string, .source.shell, .text .string, .text.html.basic'`
 
-- **provider-strategy-all**
-  > If enabled, All providers that can resolve suggestions are called __(A bit lower operation)__.
-  - Type:    `boolean`
-  - Default: `false`
+##### provider-strategy-all
+> If enabled, All providers that can resolve suggestions are called __(A bit lower operation)__.
+- Type:    `boolean`
+- Default: `false`
 
-- **enable-debug**
-  > Enable / disable debug options. Note that Atom's dev mode `$ atom --dev .` overrides this setting.
-  - Type: `boolean`
-  - Default: 
-    - `true` if Atom's dev mode `$ atom --dev .` is enabled.
-    - `false` otherwise. 
+##### enable-debug
+> Enable / disable debug options. Note that Atom's dev mode `$ atom --dev .` overrides this setting.
+- Type: `boolean`
+- Default: 
+  - `true` if Atom's dev mode `$ atom --dev .` is enabled.
+  - `false` otherwise. 
 
-
-> Example of _config.cson_ file:  
+> Example of _config.cson_:  
 ```cson
 "*":
   "atom-path-intellisense":
