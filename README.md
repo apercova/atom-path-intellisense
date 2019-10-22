@@ -1,6 +1,9 @@
 # [atom-path-intellisense](https://atom.io/packages/atom-path-intellisense)
-## Path Intellisense support for atom.  
-Autocomplete provider based on atom [autocomplete-plus](https://atom.io/packages/autocomplete-plus) package.  
+### Path Intellisense support for atom.  
+> Autocomplete provider based on atom [autocomplete-plus](https://atom.io/packages/autocomplete-plus) package.  
+![APM](https://img.shields.io/apm/v/atom-path-intellisense?style=plastic)
+[![APM](https://img.shields.io/apm/dm/atom-path-intellisense?color=%23cc6677&style=plastic)](https://atom.io/packages/atom-path-intellisense)
+![APM](https://img.shields.io/apm/l/atom-path-intellisense)
 
 ### Current build status | __See [Change Log](CHANGELOG.md)__
 | Linux & MacOS | Windows  | | |
