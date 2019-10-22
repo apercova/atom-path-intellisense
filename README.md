@@ -2,7 +2,7 @@
 ## Path Intellisense support for atom.  
 Autocomplete provider based on atom [autocomplete-plus](https://atom.io/packages/autocomplete-plus) package.  
 
-#### Current build status
+### Current build status
 | Linux & MacOS | Windows  |
 |---------------|----------|
 | [![Build Status](https://travis-ci.org/apercova/atom-path-intellisense.svg?branch=atom-ci)](https://travis-ci.org/apercova/atom-path-intellisense)        | [![Build status](https://ci.appveyor.com/api/projects/status/i39dfbmxa9usjqa1/branch/atom-ci?svg=true)](https://ci.appveyor.com/project/apercova/atom-path-intellisense/branch/atom-ci) |
@@ -17,27 +17,36 @@ Autocomplete provider based on atom [autocomplete-plus](https://atom.io/packages
   
 - Escaping of single and double quotes is allowed for files and directories.
 - Path suggestions mechanism relies on providers for appropriate grammar and selectors.
-  Default path providers are:
+  Default path providers are described below.
 
-### Providers
+### Default providers
 #### Current file path provider
+
+**_Features_**
 - Works out-of-the-box on all configured scope selectors.
 - Current file path suggestions are provided for typed word.
 
 #### Current file relative path provider
+
+**_Features_**
 - Works out-of-the-box on all configured scope selectors.
 - Current file relative path suggestions are provided typing either self `./` or Parent `../`.  
 - User's home directory path suggestions are provided typing `~/`.  
 - Project directory relative path suggestions are provided typing forward slash `/`.  
   > When not in a project, suggestions fallback to FileSystem root dir shown files with appropriate permisions.  
-- Complemenys Node.js provider on ES6 module `import` statements for relative paths. Eg. `import settings from './config/settings.js'`.  
 
+### Extended providers
 #### Node.js path provider
-Node.js path provider offers suggestions more Node.js friendly.
+Node.js path provider gives suggestions in a more Node.js friendly way.  
+
+**_Features_**  
 - Is enabled only at `.source.js .string.quoted` scope selector.  
 - Filters JavaScript files by `.js` extension.  
 - Removes file extension at selecting any suggestion.  
 - Works on  `require()` and ES6 module `import` statements.  
+- Gets complemented by _Current file relative path provider_  provider on ES6 module `import` statements for relative paths. Eg.  
+
+  `import settings from './config/settings.js'`. 
 
 ![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/nodejs_provider.gif)
 
