@@ -42,19 +42,35 @@ Autocomplete provider based on atom [autocomplete-plus](https://atom.io/packages
   
 
 ### Extended providers
+Atom-path-intellisense is not only based on default providers providers. 
+Decoupling path suggestion mechanism from autocomplete-plus provider API gives the advantage of writing specific providers that cover less general contexts.
+
+> As extended providers we refer to providers targeted to a specific language or more specific scope selectors and/or context.
+
+Basically a extended provider has to be in compliance with the following points:
+- Extend base class `BasePathProvider`.  
+- Implement following methods:
+  - `canResolve()`
+  - `resolve()`
+  - `activate`. (optional)
+  - `deactivate`. (optional)
+  
+- Optionally use a custom formatter. Eg. to trim file extensions.
+  Custom formatters have to extend `BaseFormatter` class and implement `format` method in order to format raw suggestions.
+
 #### Node.js path provider
-Node.js path provider gives suggestions in a more Node.js friendly way.  
+Node.js path provider gives suggestions for Node.js module imports.  
 
 **_Features_**  
-- Is enabled only at `.source.js .string.quoted` scope selector.  
+- It's enabled only at `.source.js .string.quoted` scope selector.  
+- It's enabled only at `require()` and ES6 module `import` statements.  
 - Filters JavaScript files by `.js` extension.  
 - Removes file extension at selecting any suggestion.  
-- Works on  `require()` and ES6 module `import` statements.  
 - Gets complemented by _Current file relative path provider_  provider on ES6 module `import` statements for relative paths. Eg.  
 
   `import settings from './config/settings.js'`. 
 
-![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/nodejs_provider.gif)
+![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/node_provider.gif)
 
 
 ### Installation
@@ -99,11 +115,5 @@ See: [Scope Selectors Reference](https://flight-manual.atom.io/behind-atom/secti
     "provider-strategy-all": false
 ```
 
+> #### Change log:  
 (__See [Change log](CHANGELOG.md)__)
-
-### Screenshots
-![](https://github.com/apercova/imageio/blob/master/atom-path-intellisense/pi-01.png?raw=true)  
-
-![](https://github.com/apercova/imageio/blob/master/atom-path-intellisense/pi-02.png?raw=true)
-
-![](https://github.com/apercova/imageio/blob/master/atom-path-intellisense/pi-03.png?raw=true)
