@@ -26,7 +26,7 @@ Autocomplete provider based on atom [autocomplete-plus](https://atom.io/packages
 - Works out-of-the-box on all configured scope selectors.
 - Current file path suggestions are provided for typed word.  
 
-![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/filepath_provider_js.gif)  
+![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/filepath_provider.gif)  
 
 #### Current file relative path provider
 
