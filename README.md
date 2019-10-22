@@ -10,8 +10,11 @@ Autocomplete provider based on atom [autocomplete-plus](https://atom.io/packages
 ### Features
 - Provides path suggestions based on typed path and context.
 - Suggestions are provided at typing by default, but it's also possible to configure them to be provided only by pressing (**_ctrl_ + _space_**) shortcut by setting  **manual-suggest** configuration setting on true.
-- Suggestions are provided within valid configured scope selectors on **allowed-scopes** configuration setting. Default value covers pretty much languages but is extensible adding more scope selectors.
-  > If you find any selector that cold improve this package make a pull request for default **allowed-scopes** configuration setting value.
+- Suggestions are provided within valid configured scope selectors on **allowed-scopes** configuration setting. Default value covers pretty much languages but is extensible adding more scope selectors.  
+
+  ``Note to developers``
+  > If you find any selector that cold improve this package make a pull request for default **allowed-scopes** configuration setting value.  
+  
 - Escaping of single and double quotes is allowed for files and directories.
 - Path suggestions mechanism relies on providers for appropriate grammar and selectors.
   Default path providers are:
