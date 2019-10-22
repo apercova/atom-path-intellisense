@@ -3,9 +3,9 @@
 Autocomplete provider based on atom [autocomplete-plus](https://atom.io/packages/autocomplete-plus) package.  
 [![APM](https://img.shields.io/apm/v/atom-path-intellisense?style=plastic)](https://atom.io/packages/atom-path-intellisense)
 [![APM](https://img.shields.io/apm/dm/atom-path-intellisense?color=%23cc6677&style=plastic)](https://atom.io/packages/atom-path-intellisense)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Inline docs](http://inch-ci.org/github/apercova/atom-path-intellisense.svg?branch=atom-ci)](http://inch-ci.org/github/apercova/atom-path-intellisense)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/apercova/atom-path-intellisense/issues)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ### Current build status | __See [Change Log](CHANGELOG.md)__
 | Linux & MacOS | Windows  | |
