@@ -25,23 +25,48 @@ Install from atom´s **_settings/packages_** tab or run following command on a t
 ### Configuration
 This package exports following configuration settings to **config.cson** file:  
 - **manual-suggest**  
-If set to true, path suggestions are provided _manually_ only by pressing (**_ctrl_ + _space_**) shortcut.  
+  > if enabled (**recomended**), suggestions are shown by pressing `ctrl` + `space` shortcut. Uncheck to get suggestions at typing.   
+  - Type:    `boolean`
+  - Default: `false`
 
 - **scope-descriptors**  
-Array of scope descriptors to allow suggestions within them.  
-Quoted strings both single and double are supported by default.  
-See: [Scope Descriptors](https://flight-manual.atom.io/behind-atom/sections/scoped-settings-scopes-and-scope-descriptors/#scope-descriptors)
+  > [Scope selectors](https://flight-manual.atom.io/behind-atom/sections/scoped-settings-scopes-and-scope-descriptors/) (__can be comma-  separated__) for which suggestions are shown. Apply to current file's relative-path suggestion providers. Other providers specify more specific selectors.  
+See: [Scope Selectors Reference](https://flight-manual.atom.io/behind-atom/sections/scoped-settings-scopes-and-scope-descriptors/#scope-selectors)  
+  - Type:    `string`
+  - Default: `'.source .string, .source.shell, .text .string, .text.html.basic'`
+
+- **provider-strategy-all**
+  > If enabled, All providers that can resolve suggestions are called __(A bit lower operation)__.
+  - Type:    `boolean`
+  - Default: `false`
+
+- **enable-debug**
+  > Enable / disable debug options. Note that Atom's dev mode `$ atom --dev .` overrides this setting.
+  - Type: `boolean`
+  - Default: 
+    - `true` if Atom's dev mode `$ atom --dev .` is enabled.
+    - `false` otherwise. 
+
 
 > #### Example of _config.cson_ file:  
 ```cson
 "*":
   "atom-path-intellisense":
-    "manual-suggest": "false"
-    "scope-descriptors": [
-      "string.quoted.single"
-      "string.quoted.double"
-    ]
+    "allowed-scopes": ".source .string, .source.shell, .text .string, .text.html.basic"
+    "enable-debug": false
+    "manual-suggest": true
+    "provider-strategy-all": false
 ```
+### Providers
+#### Node.js provider
+Node.js path provider offers suggestions more Node.js friendly.
+- Is enabled only at `.source.js .string.quoted` scope selector.  
+- Filters JavaScript files by `.js` extension.  
+- Removes file extension at selecting any suggestion.  
+- Works on  `require()` and ES6 module `import` statements.  
+
+![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/nodejs_provider.gif)
+
 
 ### Screenshots
 ![](https://github.com/apercova/imageio/blob/master/atom-path-intellisense/pi-01.png?raw=true)  
