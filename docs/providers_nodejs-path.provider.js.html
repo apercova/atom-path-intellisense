@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: providers/nodejs-path.provider.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: providers/nodejs-path.provider.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const path = require('path');
+const fs = require('fs');
+const mod = require('module');
+const { exec } = require('child_process');
+const logger = require('../util/logger');
+const BasePathProvider = require('./base-path.provider');
+const BaseFormatter = require('../formatters/base.formatter');
+const DefaultFormatter = require('../formatters/default.formatter');
+const SuggestionsDTO = require('../dto/suggestions.dto');
+const SearchPathDTO = require('../dto/search-path.dto');
+
+class NodeJSPathProvider extends BasePathProvider {
+    constructor(formatter) {
+        super();
+        this.id = 'NodeJSPathProvider';
+        this.priority = 9991;
+        this.scopeSelector = '.source.js .string.quoted';
+        this.formatter =
+            formatter instanceof BaseFormatter
+                ? formatter
+                : new DefaultFormatter();
+        this.fileExtFilter = ['.js'];
+        this._logger = logger.getLogger(this.id);
+        this._builtinModules = [];
+        this._global_node_modules = '';
+        this._requirePatternRegex = /require\(['"](.*?)['"]\)/;
+        this._importPatternRegex = /import.*?from.*?['"](.*?)['"]/;
+        this._prefixRegex = /([^/]+?)$/;
+        this._biModRegex = /^[^~./].*$/;
+        this._biModPrefixRegex = /([^'"]+?)$/;
+
+    }
+
+    /**
+     * activate - Provides a mechanism to initialize provider dependencies
+     *
+     * @return {promise}     A promise after provider activation
+     */
+    activate() {
+        let self = this;
+        return new Promise((resolve, reject) => {
+            try {
+                self._builtinModules = mod._builtinModules;
+                exec('npm root -g', (err, stdout, stderr) => {
+                    if (err) {
+                        self._logger.warn(err);
+                    } else {
+                        self._logger.debug(`npm root -g stdout: ${stdout}`);
+                        if (stderr) {
+                            self._logger.warn('npm root -g stderr:');
+                            self._logger.warn(stderr);
+                        }
+                        self._global_node_modules = path.format(
+                            path.parse(`${stdout}`.trim())
+                        );
+                        self._logger.debug(
+                            `Global node_modules path: ${self._global_node_modules}`
+                        );
+                        resolve(this);
+                    }
+                });
+            } catch (e) {
+                reject({
+                    error: e,
+                    provider: this
+                });
+            }
+        });
+    }
+
+    canResolve(req) {
+        const line = this.$getCurrentLine(req, true);
+        if (line.match(this._requirePatternRegex)) {
+            return true;
+        }
+        let match = line.match(this._importPatternRegex);
+        if (match &amp;&amp; match[1]) {
+            return match[1].match(this._biModRegex) ? true : false;
+        }
+        return false;
+    }
+
+    /**
+     * resolve - Resolve suggestions
+     *
+     * @param  {object} req Request options
+     * @return {object}     Autocomplete suggestions
+     */
+    resolve(req) {
+        const self = this;
+        return new Promise((resolve, reject) => {
+            self.$resolveSuggestions(req, self.$resolveSearchPathSync(req))
+                .then(suggestions => {
+                    if (self._getTestPath(req).match(self._biModRegex)) {
+                        const biModSuggestions = self._resolveBuiltInModuleSuggestions(
+                            req
+                        );
+                        suggestions = suggestions.concat(biModSuggestions);
+                    }
+                    resolve(suggestions);
+                })
+                .catch(e => {
+                    self._logger.warn(e);
+                    reject(e);
+                });
+        });
+    }
+
+    $resolveSearchPathSync(req) {
+        let testPath = this._getTestPath(req);
+        this._logger.debug(`trying ${testPath}`);
+
+        let basePath = testPath.startsWith('~/')
+            ? this.$getHomedir()
+            : testPath.startsWith('.')
+                ? this.$getCurrentFilePath(req)
+                : this._getProjectNodeModulesDir(req);
+        this._logger.debug(`basepath: ${basePath}`);
+
+        let fullTestPath = testPath.startsWith('~/')
+            ? path.normalize(path.join(basePath, testPath.replace(/^~\//, '')))
+            : path.normalize(path.join(basePath, testPath));
+
+        this._logger.debug(`full path resolved as: ${fullTestPath}`);
+
+        let searchPath = '';
+        /* Validating existence as file or directory */
+        try {
+            fs.accessSync(fullTestPath, fs.constants.F_OK);
+            this._logger.debug(`${fullTestPath} does exist as file or dir`);
+            /* Path does exist, validate if file or dir */
+            let stats = fs.statSync(fullTestPath);
+            if (!stats.isDirectory()) {
+                /* Pathis a file, return parent dir*/
+                this._logger.debug(`${fullTestPath} is a file`);
+                searchPath = path.parse(fullTestPath).dir;
+            } else {
+                /* Pathis a dir, return it*/
+                this._logger.debug(`${fullTestPath} is a dir`);
+                searchPath = fullTestPath;
+            }
+        } catch (e) {
+            /* testPath neither exists as file nor directory
+             * Validating existence of parent directory */
+            this._logger.warn(e);
+            this._logger.debug(
+                `${fullTestPath} does not exist as file nor dir`
+            );
+            if (!testPath.endsWith('/')) {
+                /* Prevents searching on parent directory if test path is a directory */
+                searchPath = path.parse(fullTestPath).dir;
+                try {
+                    fs.accessSync(searchPath, fs.constants.F_OK);
+                    /* Path parent dir exists, return it */
+                    this._logger.debug(
+                        `${searchPath} does exist as parent dir`
+                    );
+                } catch (e) {
+                    /* Path parent dir does not exist, return fullPath*/
+                    this._logger.debug(
+                        `${searchPath} does not exist as parent dir`
+                    );
+                    searchPath = fullTestPath;
+                }
+            } else {
+                /* No path exists at all, return fullPath*/
+                this._logger.debug('No path exists at all');
+                searchPath = fullTestPath;
+            }
+        }
+        return new SearchPathDTO(basePath, searchPath, testPath);
+    }
+
+    /**
+     * $getPrefix - Return replacement prefix
+     *
+     * @param  {object}        req    Request options
+     * @param  {SearchPathDTO} search Search options
+     * @return {string}               Replacement prefix
+     */
+    $getPrefix(req) {
+        const match = this._getTestPath(req).match(this._prefixRegex);
+        return match ? match[0] : '';
+    }
+
+    _getBiModPrefix(req) {
+        return this._getTestPath(req);
+    }
+
+    _getTestPath(req) {
+        const line = this.$getCurrentLine(req);
+        let testPath = '';
+        let match = line.match(this._requirePatternRegex);
+        if (match) {
+            testPath = match[1];
+        }
+        match = line.match(this._importPatternRegex);
+        if (match) {
+            testPath = match[1];
+        }
+        return testPath;
+    }
+
+    _getProjectNodeModulesDir(req) {
+        return path.join(
+            this.$getCurrentProjectPath(req, true, true),
+            'node_modules'
+        );
+    }
+
+    _resolveBuiltInModuleSuggestions(req) {
+        let result = new SuggestionsDTO(
+            this._getBiModPrefix(req),
+            [],
+            this.$getCurrentFilePath(req),
+            this._getTestPath(req)
+        );
+        if (Array.isArray(this._builtinModules)) {
+            this._builtinModules.forEach(mod => {
+                result.suggestions.push({ type: 'bimodule', entry: mod });
+            });
+        }
+        return this.formatter.format(result);
+    }
+}
+NodeJSPathProvider.id = 'NodeJSPathProvider';
+module.exports = NodeJSPathProvider;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-config_config.html">config/config</a></li><li><a href="module-config_consts.html">config/consts</a></li><li><a href="module-config_settings.html">config/settings</a></li><li><a href="module-dto_SearchPathDTO.html">dto/SearchPathDTO</a></li></ul><h3>Classes</h3><ul><li><a href="BaseFormatter.html">BaseFormatter</a></li><li><a href="BasePathProvider.html">BasePathProvider</a></li><li><a href="DefaultFormatter.html">DefaultFormatter</a></li><li><a href="module-dto_SearchPathDTO-SearchPathDTO.html">SearchPathDTO</a></li><li><a href="NodeJSFormatter.html">NodeJSFormatter</a></li><li><a href="SuggestionsDTO.html">SuggestionsDTO</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Mon Oct 21 2019 21:43:26 GMT-0500 (Hora de verano central (México))
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

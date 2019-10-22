@@ -17,6 +17,9 @@
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
+  "scripts": {
+    "docs": "./node_modules/.bin/jsdoc lib/**/*.js --destination docs"
+  },
   "dependencies": {
     "atom-selectors-plus": "^0.1.1",
     "winston": "^3.2.1"
@@ -30,6 +33,7 @@
   },
   "devDependencies": {
     "eslint": "^6.5.1",
+    "jsdoc": "~3.6.3",
     "prettier": "^1.18.2"
   }
 }

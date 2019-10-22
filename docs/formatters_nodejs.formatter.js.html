@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: formatters/nodejs.formatter.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: formatters/nodejs.formatter.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const path = require('path');
+const stringUtils = require('../util/string-utils');
+const BaseFormatter = require('./base.formatter');
+const SuggestionsDTO = require('../dto/suggestions.dto');
+
+/**
+ * Default formatter class
+ * @author {@literal @}apercova
+ * &lt;a href="https://github.com/apercova" target="_blank">https://github.com/apercova&lt;/a>
+ * &lt;a href="https://twitter.com/apercova" target="_blank">{@literal @}apercova&lt;/a>
+ * @since 1.2.0
+ */
+class NodeJSFormatter extends BaseFormatter {
+    constructor() {
+        super();
+        this.id = 'NodeJSFormatter';
+    }
+
+    /**
+     * format - format suggestion based on entry type
+     *
+     * @param  {SuggestionsDTO} rawSuggestions Raw suggestions to format
+     * @param  {object} req                    Request options
+     * @return {object}                        Formatted suggestions
+     */
+    format(rawSuggestions) {
+        let fSuggestions = [];
+        if (
+            rawSuggestions instanceof SuggestionsDTO &amp;&amp;
+            Array.isArray(rawSuggestions.suggestions)
+        ) {
+            rawSuggestions.suggestions.forEach(raw => {
+                let pathType = rawSuggestions.testPath.startsWith('.')
+                    ? 'relative'
+                    : 'local';
+                if (raw.type === 'dir') {
+                    fSuggestions.push(
+                        this._formatDirectory(
+                            `${raw.entry}`,
+                            rawSuggestions.prefix,
+                            rawSuggestions.searchPath,
+                            pathType
+                        )
+                    );
+                }
+                if (raw.type === 'file') {
+                    fSuggestions.push(
+                        this._formatFile(
+                            raw.entry,
+                            rawSuggestions.prefix,
+                            rawSuggestions.searchPath,
+                            pathType
+                        )
+                    );
+                }
+                if (raw.type === 'bimodule') {
+                    fSuggestions.push(
+                        this._formatBiModule(raw.entry, rawSuggestions.prefix)
+                    );
+                }
+            });
+        }
+        return fSuggestions;
+    }
+
+    _formatBiModule(entry, prefix) {
+        const source = 'Node.js Built-in Module:';
+        return {
+            displayText: entry,
+            text: entry,
+            replacementPrefix: stringUtils.escapeStringQuote(prefix),
+            type: 'snippet',
+            leftLabelHTML: '&lt;span>&amp;nbsp;Built-in&lt;/span>',
+            rightLabelHTML: `&lt;span class="pi-rlabel bimodule">&lt;span class="tag">&amp;nbsp;${source}&lt;/span> ${entry}&lt;/span>`,
+            description: 'This module is provided by Node.js ..',
+            descriptionMoreURL:
+                'https://nodejs.org/api/modules.html#modules_module_builtinmodules',
+            iconHTML: '&lt;i class="icon-package">&lt;/i>'
+        };
+    }
+
+    /**
+     * _formatFile - Format a file entry
+     *
+     * @param  {string} entry      unformatted file entry
+     * @param  {string} prefix     Replacement prefix
+     * @param  {string} searchPath Base entry search path
+     * @param  {string} pathType   Base entry search path type
+     * @return {object}            Formated entry
+     */
+    _formatFile(entry, prefix, searchPath, pathType) {
+        const pEntry = path.parse(entry);
+        const source = pathType === 'local' ? 'Local' : 'Relative';
+        return {
+            displayText: stringUtils.unescapeStringQuote(pEntry.name),
+            text: stringUtils.escapeStringQuote(pEntry.name),
+            replacementPrefix: stringUtils.escapeStringQuote(prefix),
+            type: 'class',
+            leftLabelHTML: `&lt;span>&amp;nbsp;${source}&lt;/span>`,
+            rightLabelHTML: `&lt;span title="&amp;nbsp;File: ${pEntry.base}" tooltip="${pEntry.base}" class="pi-rlabel file">&lt;span class="tag">&amp;nbsp;File:&lt;/span> ${pEntry.base}&lt;/span>`,
+            description: `${path.normalize(
+                searchPath + '/' + stringUtils.unescapeStringQuote(entry)
+            )}`,
+            iconHTML: '&lt;i class="icon-file-code">&lt;/i>'
+        };
+    }
+
+    /**
+     * _formatDirectory - Format a file entry
+     *
+     * @param  {string} entry      unformatted directory entry
+     * @param  {string} prefix     Replacement prefix
+     * @param  {string} searchPath Base entry search path
+     * @param  {string} pathType   Base entry search path type
+     * @return {object}            Formated entry
+     */
+    _formatDirectory(entry, prefix, searchPath, pathType) {
+        const source = pathType === 'local' ? 'Local' : 'Relative';
+        return {
+            displayText: stringUtils.unescapeStringQuote(entry),
+            text: stringUtils.escapeStringQuote(entry),
+            replacementPrefix: stringUtils.escapeStringQuote(prefix),
+            type: 'class',
+            leftLabelHTML: `&lt;span>&amp;nbsp;${source}&lt;/span>`,
+            rightLabelHTML: `&lt;span title="&amp;nbsp;Dir: ${entry}/" class="pi-rlabel file">&lt;span class="tag">&amp;nbsp;Dir:&lt;/span> ${entry}/&lt;/span>`,
+            description: `${path.normalize(
+                searchPath + '/' + stringUtils.unescapeStringQuote(entry)
+            )}`,
+            iconHTML: '&lt;i class="icon-package">&lt;/i>'
+        };
+    }
+}
+NodeJSFormatter.id = 'NodeJSFormatter';
+module.exports = NodeJSFormatter;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-config_config.html">config/config</a></li><li><a href="module-config_consts.html">config/consts</a></li><li><a href="module-config_settings.html">config/settings</a></li><li><a href="module-dto_SearchPathDTO.html">dto/SearchPathDTO</a></li></ul><h3>Classes</h3><ul><li><a href="BaseFormatter.html">BaseFormatter</a></li><li><a href="BasePathProvider.html">BasePathProvider</a></li><li><a href="DefaultFormatter.html">DefaultFormatter</a></li><li><a href="module-dto_SearchPathDTO-SearchPathDTO.html">SearchPathDTO</a></li><li><a href="NodeJSFormatter.html">NodeJSFormatter</a></li><li><a href="SuggestionsDTO.html">SuggestionsDTO</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Mon Oct 21 2019 21:43:26 GMT-0500 (Hora de verano central (México))
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
