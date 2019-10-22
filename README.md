@@ -8,13 +8,36 @@ Autocomplete provider based on atom [autocomplete-plus](https://atom.io/packages
 | [![Build Status](https://travis-ci.org/apercova/atom-path-intellisense.svg?branch=atom-ci)](https://travis-ci.org/apercova/atom-path-intellisense)        | [![Build status](https://ci.appveyor.com/api/projects/status/i39dfbmxa9usjqa1/branch/atom-ci?svg=true)](https://ci.appveyor.com/project/apercova/atom-path-intellisense/branch/atom-ci) |
 
 ### Features
-- Provides path suggestions based on typed path.
-- Current file relative path suggestions are provided typing either self (**./**) or parent(**../**) directory location.
-- Project folder relative path suggestions are provided typing forward slash (**/**).
-- Suggestions are provided at typing by default, but it's also possible to configure them to be provided only by pressing (**_ctrl_ + _space_**) shortcut by setting  **manual-suggest** configuration parameter on true.
-- Suggestions are provided within quoted strings both single and double by default.  
-It´s possible to configure different scope descriptors in **scope-descriptors** configuration parameter.  
-- Escaping of single quotes is allowed within single-quoted strings.
+- Provides path suggestions based on typed path and context.
+- Suggestions are provided at typing by default, but it's also possible to configure them to be provided only by pressing (**_ctrl_ + _space_**) shortcut by setting  **manual-suggest** configuration setting on true.
+- Suggestions are provided within valid configured scope selectors on **allowed-scopes** configuration setting. Default value covers pretty much languages but is extensible adding more scope selectors.
+  > If you find any selector that cold improve this package make a pull request for default **allowed-scopes** configuration setting value.
+- Escaping of single and double quotes is allowed for files and directories.
+- Path suggestions mechanism relies on providers for appropriate grammar and selectors.
+  Default path providers are:
+
+### Providers
+#### Current file path provider
+- Works out-of-the-box on all configured scope selectors.
+- Current file path suggestions are provided for typed word.
+
+#### Current file relative path provider
+- Works out-of-the-box on all configured scope selectors.
+- Current file relative path suggestions are provided typing either self `./` or Parent `../`.  
+- User's home directory path suggestions are provided typing `~/`.  
+- Project directory relative path suggestions are provided typing forward slash `/`.  
+  > When not in a project, suggestions fallback to FileSystem root dir shown files with appropriate permisions.  
+- Complemenys Node.js provider on ES6 module `import` statements for relative paths. Eg. `import settings from './config/settings.js'`.  
+
+#### Node.js path provider
+Node.js path provider offers suggestions more Node.js friendly.
+- Is enabled only at `.source.js .string.quoted` scope selector.  
+- Filters JavaScript files by `.js` extension.  
+- Removes file extension at selecting any suggestion.  
+- Works on  `require()` and ES6 module `import` statements.  
+
+![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/nodejs_provider.gif)
+
 
 ### Installation
 Install from atom´s **_settings/packages_** tab or run following command on a terminal:
@@ -57,16 +80,8 @@ See: [Scope Selectors Reference](https://flight-manual.atom.io/behind-atom/secti
     "manual-suggest": true
     "provider-strategy-all": false
 ```
-### Providers
-#### Node.js provider
-Node.js path provider offers suggestions more Node.js friendly.
-- Is enabled only at `.source.js .string.quoted` scope selector.  
-- Filters JavaScript files by `.js` extension.  
-- Removes file extension at selecting any suggestion.  
-- Works on  `require()` and ES6 module `import` statements.  
 
-![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/nodejs_provider.gif)
-
+(__See [Change log](CHANGELOG.md)__)
 
 ### Screenshots
 ![](https://github.com/apercova/imageio/blob/master/atom-path-intellisense/pi-01.png?raw=true)  
