@@ -13,7 +13,7 @@ Autocomplete provider based on atom [autocomplete-plus](https://atom.io/packages
 - Suggestions are provided within valid configured scope selectors on **allowed-scopes** configuration setting. Default value covers pretty much languages but is extensible adding more scope selectors.  
 
   ``Note to developers``
-  > If you find any selector that cold improve this package make a pull request for default **allowed-scopes** configuration setting value.  
+  > If you find any selector that could improve this package make a pull request for default **allowed-scopes** configuration setting value.  
   
 - Escaping of single and double quotes is allowed for files and directories.
 - Path suggestions mechanism relies on providers for appropriate grammar and selectors.
@@ -26,7 +26,7 @@ Autocomplete provider based on atom [autocomplete-plus](https://atom.io/packages
 - Works out-of-the-box on all configured scope selectors.
 - Current file path suggestions are provided for typed word.
 
-![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/filepath_provider.gif)  
+  ![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/filepath_provider.gif)  
 
 #### Current file relative path provider
 
@@ -70,7 +70,7 @@ Node.js path provider gives suggestions for Node.js module imports.
 
   `import settings from './config/settings.js'`. 
 
-![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/node_provider.gif)
+  ![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/node_provider.gif)
 
 
 ### Installation
