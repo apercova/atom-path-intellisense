@@ -32,15 +32,15 @@ Autocomplete provider based on atom [autocomplete-plus](https://atom.io/packages
 
 **_Features_**
 - Works out-of-the-box on all configured scope selectors.
-- Current file relative path suggestions are provided typing either self `./` or Parent `../`.  
+- Current file relative path suggestions are provided typing either self `./` or parent `../` directories.  
 
   ![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/filepath_rel_provider.gif)  
   
-- User's home directory path suggestions are provided typing `~/`.  
+- User's home directory path suggestions are provided typing: `~/`.  
 
   ![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/filepath_rel_provider_home.gif)  
   
-- Project directory relative path suggestions are provided typing forward slash `/`.  
+- Project directory relative path suggestions are provided typing forward slash: `/`.  
   > When not in a project, suggestions fallback to FileSystem root dir shown files with appropriate permisions.  
   
   ![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/filepath_rel_provider_project.gif)  
