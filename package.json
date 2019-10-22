@@ -18,7 +18,7 @@
     "atom": ">=1.0.0 <2.0.0"
   },
   "scripts": {
-    "docs": "./node_modules/.bin/jsdoc lib/**/*.js --destination docs"
+    "docs": "rm -Rf docs && mkdir docs && ./node_modules/.bin/jsdoc lib/**/*.js --destination docs"
   },
   "dependencies": {
     "atom-selectors-plus": "^0.1.1",
