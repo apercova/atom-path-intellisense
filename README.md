@@ -2,7 +2,7 @@
 ## Path Intellisense support for atom.  
 Autocomplete provider based on atom [autocomplete-plus](https://atom.io/packages/autocomplete-plus) package.  
 
-### Current build status
+### Current build status | __See [Change Log](CHANGELOG.md)__
 | Linux & MacOS | Windows  |
 |---------------|----------|
 | [![Build Status](https://travis-ci.org/apercova/atom-path-intellisense.svg?branch=atom-ci)](https://travis-ci.org/apercova/atom-path-intellisense)        | [![Build status](https://ci.appveyor.com/api/projects/status/i39dfbmxa9usjqa1/branch/atom-ci?svg=true)](https://ci.appveyor.com/project/apercova/atom-path-intellisense/branch/atom-ci) |
@@ -105,7 +105,7 @@ See: [Scope Selectors Reference](https://flight-manual.atom.io/behind-atom/secti
     - `false` otherwise. 
 
 
-> #### Example of _config.cson_ file:  
+> Example of _config.cson_ file:  
 ```cson
 "*":
   "atom-path-intellisense":
@@ -114,6 +114,3 @@ See: [Scope Selectors Reference](https://flight-manual.atom.io/behind-atom/secti
     "manual-suggest": true
     "provider-strategy-all": false
 ```
-
-> #### Change log:  
-(__See [Change log](CHANGELOG.md)__)
