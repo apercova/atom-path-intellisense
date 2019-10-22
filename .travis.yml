@@ -28,6 +28,7 @@ notifications:
 branches:
   only:
     - atom-ci
+    - docs
     - release-1.2.0
 
 git:
