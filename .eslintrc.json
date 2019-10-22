@@ -23,7 +23,6 @@
     },
     "rules": {
         "indent": ["error",4],
-        "linebreak-style": ["off","unix"],
         "quotes": ["error", "single", { "avoidEscape": true }],
         "semi": ["error","never"],
         "eqeqeq": ["error","always"],
@@ -37,6 +36,7 @@
         "no-undefined": "error",
         "consistent-return": "error",
         "no-useless-return": "error",
+        "linebreak-style": ["warn","unix"],
         "no-extra-parens": "warn",
         "no-extra-label": "warn",
         "no-multi-spaces": "warn",
