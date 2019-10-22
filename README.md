@@ -19,8 +19,9 @@ Autocomplete provider based on atom [autocomplete-plus](https://atom.io/packages
 :heavy_check_mark: Path suggestions mechanism relies on providers for appropriate grammar and selectors. Default path providers are described below.
 
 ### Default providers
-#### Current file path provider
+Give path suggestions relative to current file path.
 
+#### Current file path provider
 ##### **_Features_**
 :heavy_check_mark: Works out-of-the-box on all configured scope selectors.  
 :heavy_check_mark: Current file path suggestions are provided for typed word.  
@@ -28,7 +29,6 @@ Autocomplete provider based on atom [autocomplete-plus](https://atom.io/packages
 ![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/filepath_provider.gif)  
 
 #### Current file relative path provider
-
 ##### **_Features_**
 :heavy_check_mark: Works out-of-the-box on all configured scope selectors.  
 :heavy_check_mark: Current file relative path suggestions are provided typing either self `./` or parent `../` directories.  
@@ -46,20 +46,20 @@ Decoupling path suggestion mechanism from autocomplete-plus provider API gives t
 
 > As extended providers we refer to providers targeted to a specific language or more specific scope selectors and/or context.
 
-Basically a extended provider has to be in compliance with the following points:
+Basically a extended provider has to be in compliance with the following:
 - Extend base class `BasePathProvider`.  
 - Implement following methods:
   - `canResolve()`
   - `resolve()`
   - `activate`. (optional)
   - `deactivate`. (optional)
-  
 - Optionally use a custom formatter. Eg. to trim file extensions.
-  Custom formatters have to extend `BaseFormatter` class and implement `format` method in order to format raw suggestions.
+  Custom formatters have to be in compliance with the following:  
+  - Extend base class `BaseFormatter`.  
+  - Implement `format` method in order to format raw suggestions.
 
-#### Node.js path provider
+#### Node.js path provider (Extended)
 Node.js path provider gives suggestions for Node.js module imports.  
-
 ##### **_Features_**
 :heavy_check_mark: It's enabled only at `.source.js .string.quoted` scope selector.  
 :heavy_check_mark: It's enabled only at `require()` and ES6 module `import` statements.  
