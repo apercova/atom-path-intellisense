@@ -71,9 +71,7 @@ Node.js path provider gives suggestions for Node.js module imports.
 :heavy_check_mark: It's enabled only at `require()` and ES6 module `import` statements.  
 :heavy_check_mark: Filters JavaScript files by `.js` extension.  
 :heavy_check_mark: Removes file extension at selecting any suggestion.  
-:heavy_check_mark:- Gets complemented by _Current file relative path provider_  provider on ES6 module `import` statements for relative paths. Eg.  
-
-  `import settings from './config/settings.js'`. 
+:heavy_check_mark:- Gets complemented by _Current file relative path provider_  provider on ES6 module `import` statements for relative paths. Eg. `import settings from './config/settings.js'`.  
 
 ![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/node_provider.gif)
 
