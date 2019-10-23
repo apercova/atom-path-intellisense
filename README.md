@@ -4,6 +4,7 @@ Autocomplete provider based on atom [autocomplete-plus](https://atom.io/packages
 [![APM](https://img.shields.io/apm/v/atom-path-intellisense?style=plastic)](https://atom.io/packages/atom-path-intellisense)
 [![APM](https://img.shields.io/apm/dm/atom-path-intellisense?color=%23cc6677&style=plastic)](https://atom.io/packages/atom-path-intellisense)
 [![Inline docs](http://inch-ci.org/github/apercova/atom-path-intellisense.svg?branch=atom-ci)](http://inch-ci.org/github/apercova/atom-path-intellisense)
+[![Maintainability](https://api.codeclimate.com/v1/badges/5cb79bcbdcfc1db02a51/maintainability)](https://codeclimate.com/github/apercova/atom-path-intellisense/maintainability)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/apercova/atom-path-intellisense/issues)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
