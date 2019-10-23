@@ -27,6 +27,7 @@ gulp.task('untar_source', function() {
 gulp.task('clean_source', async function() {
     await del(['src']);
 });
+
 gulp.task('clean_dist', async function() {
     await del(['assets']);
     await del(['lib']);
@@ -73,13 +74,6 @@ gulp.task('minify_specs', function() {
         .pipe(gulp.dest('spec/'));
 });
 
-gulp.task('minify_styles', function() {
-    return gulp
-        .src('src/styles/**/*.less', { allowEmpty: true })
-        .pipe(minify({ noSource: true }))
-        .pipe(gulp.dest('styles/'));
-});
-
 gulp.task('copy_lib_to_source', async function() {
     await del(['src']);
     await gulp.src('lib/**/*').pipe(gulp.dest('src/lib/'));
@@ -98,7 +92,7 @@ gulp.task('docs', gulp.series(['clean_docs', 'gen_docs']));
 
 gulp.task(
     'minify',
-    gulp.series(['minify_source', 'minify_specs', 'minify_styles'])
+    gulp.series(['minify_source', 'minify_specs'])
 );
 
 gulp.task(
