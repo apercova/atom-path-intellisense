@@ -42,6 +42,7 @@ Give path suggestions relative to current file path.
   > When not in a project, suggestions fallback to FileSystem root dir shown files with appropriate permisions.  
 
 ![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/filepath_rel_provider.gif)  
+
 ![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/filepath_rel_provider_home.gif)  
   
 
