@@ -15,7 +15,7 @@ Autocomplete provider based on atom [autocomplete-plus](https://atom.io/packages
 
 ### Features
 :heavy_check_mark: Provides path suggestions based on typed path and context.  
-:heavy_check_mark: Suggestions are provided at typing by default, but it's also possible to configure them to be provided only by       pressing (**_ctrl_ + _space_**) shortcut by setting  **manual-suggest** configuration setting on true.  
+:heavy_check_mark: Suggestions are provided by pressing (**_ctrl_ + _space_**) shortcut by default. Uncheck  **manual-suggest** configuration setting to get suggestions at typing.  
 :heavy_check_mark: Suggestions are provided within valid configured scope selectors on **allowed-scopes** configuration setting. Default value covers pretty much languages but is extensible adding more scope selectors.  
 
   ``Note to developers``
@@ -87,7 +87,7 @@ This package exports following configuration settings to **config.cson** file:
 ##### manual-suggest
 > if enabled (**recomended**), suggestions are shown by pressing `ctrl` + `space` shortcut. Uncheck to get suggestions at typing.   
 - Type:    `boolean`
-- Default: `false`
+- Default: `true`
 
 ##### scope-descriptors
 > [Scope selectors](https://flight-manual.atom.io/behind-atom/sections/scoped-settings-scopes-and-scope-descriptors/) (__can be comma-  separated__) for which suggestions are shown. Apply to current file's relative-path suggestion providers. Other providers specify more specific selectors.  
