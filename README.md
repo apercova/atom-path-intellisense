@@ -29,18 +29,19 @@ Give path suggestions relative to current file path.
 
 #### Current file path provider
 ##### **_Features_**
-:heavy_check_mark: Works out-of-the-box on all configured scope selectors.  
-:heavy_check_mark: Current file path suggestions are provided for typed word.  
+:heavy_check_mark: Works out-of-the-box on allowed scope selectors.  
+:heavy_check_mark: Provides suggestions for current file path.  
 
 ![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/filepath_provider.gif)  
 
 #### Current file relative path provider
 ##### **_Features_**
-:heavy_check_mark: Works out-of-the-box on all configured scope selectors.  
-:heavy_check_mark: Current file relative path suggestions are provided typing either self `./` or parent `../` directories.  
-:heavy_check_mark: User's home directory path suggestions are provided typing: `~/`.  
-:heavy_check_mark: Project directory relative path suggestions are provided typing forward slash: `/`.  
-  > When not in a project, suggestions fallback to FileSystem root dir shown files with appropriate permisions.  
+:heavy_check_mark: Works out-of-the-box on allowed scope selectors.  
+:heavy_check_mark: Provides suggestions for paths relative to current file path.
+:heavy_check_mark: Relative suggestions are shown by typing self `./` or parent `../` directories.  
+:heavy_check_mark: Suggestions for paths relative to user's home directory are shown by typing: `~/`.  
+:heavy_check_mark: Suggestions for paths relative to current project directory are shown by typing forward slash: `/`.  
+  > When not in a project, suggestions fallback to FileSystem root directory shown files with appropriate permisions.  
 
 ![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/filepath_rel_provider.gif)  
 
@@ -48,10 +49,10 @@ Give path suggestions relative to current file path.
   
 
 ### Extended providers
-Atom-path-intellisense is not only based on default providers providers. 
-Decoupling path suggestion mechanism from autocomplete-plus provider API gives the advantage of writing specific providers that cover less general contexts.
+Atom-path-intellisense is not only based on default suggestion providers. 
+Decoupling path suggestions mechanism from autocomplete-plus provider API gives the advantage of writing extended providers that cover more specific contexts and can be formatted in their own way.
 
-> As extended providers we refer to providers targeted to a specific language or more specific scope selectors and/or context.
+> We refer as extended providers to providers targeted to a specific language or more specific scope selectors and context.
 
 An extended provider has to be in compliance with the following:
 - Extend base class `BasePathProvider`.  
@@ -65,11 +66,12 @@ An extended provider has to be in compliance with the following:
   - Extend base class `BaseFormatter`.  
   - Implement `format` method in order to format raw suggestions.
 
-#### Node.js path provider (Extended)
+#### Node.js path provider `Extended`
 Node.js path provider gives suggestions for Node.js module imports.  
 ##### **_Features_**
 :heavy_check_mark: It's enabled only at `.source.js .string.quoted` scope selector.  
 :heavy_check_mark: It's enabled only at `require()` and ES6 module `import` statements.  
+:heavy_check_mark: Provides suggestions for Node.js built-in modules, local modules on project `node_modules` directory and modules relative to current file.  
 :heavy_check_mark: Filters JavaScript files by `.js` extension.  
 :heavy_check_mark: Removes file extension at selecting any suggestion.  
 :heavy_check_mark:- Gets complemented by _Current file relative path provider_  provider on ES6 module `import` statements for relative paths. Eg. `import settings from './config/settings.js'`.  
