@@ -9,12 +9,12 @@ Autocomplete provider based on atom [autocomplete-plus](https://atom.io/packages
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/apercova/atom-path-intellisense/issues)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-### Current build status | __See [Change Log :barber:](CHANGELOG.md)__
+### Current build status :factory: | [Change Log :barber:](CHANGELOG.md)
 | Linux & MacOS | Windows  |
 |---------------|----------|
 | [![Build Status](https://travis-ci.org/apercova/atom-path-intellisense.svg?branch=atom-ci)](https://travis-ci.org/apercova/atom-path-intellisense)        | [![Build status](https://ci.appveyor.com/api/projects/status/i39dfbmxa9usjqa1/branch/atom-ci?svg=true)](https://ci.appveyor.com/project/apercova/atom-path-intellisense/branch/atom-ci) |
 
-### :muscle: Features 
+### Features 
 - Provides path suggestions based on typed path and context.
 - By default suggestions are provided by pressing `ctrl + space `. Uncheck  **`manual-suggest`** configuration setting to get suggestions at typing.
 - Suggestions are provided within scope selectors configured on **` allowed-scopes `** configuration setting. Default selectors cover pretty much languages but is extensible by adding more scope selectors.  
