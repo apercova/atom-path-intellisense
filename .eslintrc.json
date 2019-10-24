@@ -18,7 +18,7 @@
         "SharedArrayBuffer": "readonly"
     },
     "parserOptions": {
-        "ecmaVersion": 6,
+        "ecmaVersion": 2018,
         "sourceType": "module"
     },
     "rules": {
@@ -37,12 +37,12 @@
         "no-undefined": "error",
         "consistent-return": "error",
         "no-useless-return": "error",
-        "linebreak-style": ["warn","unix"],
+        "linebreak-style": ["warn","windows"],
         "no-extra-parens": "warn",
         "no-extra-label": "warn",
         "no-multi-spaces": "warn",
         "valid-jsdoc": "warn",
         "no-unused-vars": "warn",
-        "complexity": ["off", 6 ]
+        "complexity": ["off", 5 ]
     }
 }

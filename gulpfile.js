@@ -1,52 +1,96 @@
 'use strict';
-const gulp = require('gulp');
-const minify = require('gulp-minify');
-const tar = require('gulp-tar');
-const untar = require('gulp-untar');
-const gzip = require('gulp-gzip');
-const gunzip = require('gulp-gunzip');
-const del = require('del');
-const jsdoc = require('gulp-jsdoc3');
+/**
+ *
+ * @description Gulp configuration file.
+ * @author
+ *  [{@link https://github.com/apercova|github@apercova}],
+ *  [{@link https://twitter.com/apercova|twitter@apercova}],
+ *  [{@link https://www.npmjs.com/~apercova|npmjs/~apercova}]
+ *
+ * @since 1.2.0
+ */
+const del = require('del'),
+    gulp = require('gulp'),
+    eslint = require('gulp-eslint'),
+    gunzip = require('gulp-gunzip'),
+    gzip = require('gulp-gzip'),
+    jsdoc = require('gulp-jsdoc3'),
+    minify = require('gulp-minify'),
+    prettierEslint = require('gulp-prettier-eslint'),
+    tar = require('gulp-tar'),
+    untar = require('gulp-untar');
 
-gulp.task('tar_source', function() {
+/**
+ * Task for generate docs.
+ */
+gulp.task('docs', cb => {
+    del('docs/**');
     return gulp
-        .src('src/**/*')
-        .pipe(tar('atom-path-intellisense.source.tar'))
+        .src(['README.md', './lib/**/*.js'], { read: false })
+        .pipe(jsdoc(cb));
+});
+
+/**
+ * Task for backup source files.
+ */
+gulp.task('source:backup', () => {
+    return gulp
+        .src([
+            '**',
+            '!.git/**',
+            '!.docs/**',
+            '!node_modules/**',
+            '!atom-path-intellisense-source.tar.gz'
+        ])
+        .pipe(tar('atom-path-intellisense-source.tar'))
         .pipe(gzip())
         .pipe(gulp.dest('.'));
 });
 
-gulp.task('untar_source', function() {
+/**
+ * Task for prettify source files.
+ */
+gulp.task('source:prettify', () => {
+    gulp.src('lib/**/*.js')
+        .pipe(prettierEslint())
+        .pipe(gulp.dest('./lib'));
+    gulp.src('spec/**/*.js')
+        .pipe(prettierEslint())
+        .pipe(gulp.dest('./spec'));
     return gulp
-        .src('atom-path-intellisense.source.tar.gz')
-        .pipe(gunzip())
-        .pipe(untar())
-        .pipe(gulp.dest('src'));
+        .src('gulpfile.js')
+        .pipe(prettierEslint())
+        .pipe(gulp.dest('.'));
 });
 
-gulp.task('clean_source', async function() {
-    await del(['src']);
-});
-
-gulp.task('clean_dist', async function() {
-    await del(['assets']);
-    await del(['lib']);
-    await del(['spec']);
-    await del(['styles']);
-});
-
-gulp.task('clean_docs', async function() {
-    await del(['docs']);
-});
-
-gulp.task('gen_docs', function(cb) {
-    return gulp.src(['README.md', './src/lib/**/*.js'], { read: false })
-    .pipe(jsdoc(cb));
-});
-
-gulp.task('minify_source', function() {
+/**
+ * Task for lint source files with eslint.
+ */
+gulp.task('source:lint', () => {
     return gulp
-        .src(['src/lib/**/*.js'], { allowEmpty: true })
+        .src(['lib/**/*.js', 'spec/**/*.js', 'gulpfile.js', '.eslintrc.json'])
+        .pipe(eslint())
+        .pipe(eslint.format())
+        .pipe(eslint.failAfterError());
+});
+
+/**
+ * Task for minify source files.
+ */
+gulp.task('source:minify', () => {
+    gulp.src(['spec/**/*.js'], { allowEmpty: true })
+        .pipe(
+            minify({
+                noSource: true,
+                ext: {
+                    src: '.js',
+                    min: '.js'
+                }
+            })
+        )
+        .pipe(gulp.dest('spec/'));
+    return gulp
+        .src(['lib/**/*.js'], { allowEmpty: true })
         .pipe(
             minify({
                 noSource: true,
@@ -59,48 +103,34 @@ gulp.task('minify_source', function() {
         .pipe(gulp.dest('lib/'));
 });
 
-gulp.task('minify_specs', function() {
+/**
+ * Task for restore source files from tarball.
+ */
+gulp.task('source:restore', function() {
+    del([
+        '**',
+        '!.git/**',
+        '!.docs/**',
+        '!node_modules/**',
+        '!atom-path-intellisense-source.tar.gz'
+    ]);
     return gulp
-        .src(['src/spec/**/*.js'], { allowEmpty: true })
-        .pipe(
-            minify({
-                noSource: true,
-                ext: {
-                    src: '.js',
-                    min: '.js'
-                }
-            })
-        )
-        .pipe(gulp.dest('spec/'));
+        .src('atom-path-intellisense-source.tar.gz')
+        .pipe(gunzip())
+        .pipe(untar())
+        .pipe(gulp.dest('.'));
 });
 
-gulp.task('copy_lib_to_source', async function() {
-    await del(['src']);
-    await gulp.src('lib/**/*').pipe(gulp.dest('src/lib/'));
-    await gulp.src('spec/**/*').pipe(gulp.dest('src/spec/'));
-    await gulp.src('styles/**/*').pipe(gulp.dest('src/styles/'));
-});
-
-gulp.task('copy_source_to_dist', async function() {
-    await gulp.src('src/assets/**/*').pipe(gulp.dest('assets/'));
-    await gulp.src('src/lib/**/*').pipe(gulp.dest('lib/'));
-    await gulp.src('src/spec/**/*').pipe(gulp.dest('spec/'));
-    await gulp.src('src/styles/**/*').pipe(gulp.dest('styles/'));
-});
-
-gulp.task('docs', gulp.series(['clean_docs', 'gen_docs']));
-
+/**
+ * Task for prepare release artifacts.
+ */
 gulp.task(
-    'minify',
-    gulp.series(['minify_source', 'minify_specs'])
-);
-
-gulp.task(
-    'restore_source',
-    gulp.series(['clean_dist', 'clean_source', 'untar_source', 'copy_source_to_dist'])
-);
-
-gulp.task(
-    'prepare_release',
-    gulp.series(['tar_source', 'minify', 'clean_source', 'clean_docs'])
+    'release:prepare',
+    gulp.series([
+        'source:lint',
+        'source:prettify',
+        'source:backup',
+        'docs',
+        'source:minify'
+    ])
 );

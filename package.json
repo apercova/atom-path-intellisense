@@ -35,13 +35,14 @@
     "del": "^5.1.0",
     "eslint": "^6.5.1",
     "gulp": "^4.0.2",
+    "gulp-eslint": "^6.0.0",
     "gulp-gunzip": "^1.1.0",
     "gulp-gzip": "^1.4.2",
     "gulp-jsdoc3": "^2.0.0",
     "gulp-minify": "^3.1.0",
+    "gulp-prettier-eslint": "^1.1.0",
     "gulp-tar": "^3.0.1",
     "gulp-untar": "0.0.8",
-    "jsdoc": "~3.6.3",
-    "prettier": "^1.18.2"
+    "prettier": "~1.18.2"
   }
 }
