@@ -1,5 +1,5 @@
 # Atom-path-Intellisense
-## CHANGELOG
+## :barber: CHANGELOG :barber:
 
 ### 1.1.x
 - Provides path suggestions based on typed path.
