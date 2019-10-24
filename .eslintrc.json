@@ -18,12 +18,12 @@
         "SharedArrayBuffer": "readonly"
     },
     "parserOptions": {
-        "ecmaVersion": 2018,
+        "ecmaVersion": 6,
         "sourceType": "module"
     },
     "rules": {
         "indent": ["error",2],
-        "max-len": ["error", { "code": 140, "tabWidth": 2 }],
+        "max-len": ["error", { "code": 120, "tabWidth": 2 }],
         "quotes": ["error", "single", { "avoidEscape": true }],
         "semi": ["error","never"],
         "eqeqeq": ["error","always"],
@@ -37,12 +37,11 @@
         "no-undefined": "error",
         "consistent-return": "error",
         "no-useless-return": "error",
-        "linebreak-style": ["warn","windows"],
+        "linebreak-style": ["warn","unix"],
         "no-extra-parens": "warn",
         "no-extra-label": "warn",
         "no-multi-spaces": "warn",
         "valid-jsdoc": "warn",
-        "no-unused-vars": "warn",
-        "complexity": ["off", 5 ]
+        "no-unused-vars": "warn"
     }
 }
