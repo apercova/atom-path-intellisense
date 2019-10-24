@@ -12,12 +12,17 @@ It´s possible to configure different scope descriptors in **scope-descriptors**
 
 
 ### 1.2.0
-- Introduced suggestion model based on providers.
-- Default provider for current file path suggestions.
-- Default providers for current file relative path suggestions.
-- Improvements on default suggestions providers look&feel.
-- Provider extensible model for integration of new path providers.
-- Formatter extensible model for integration of new formatters.
-- Extended Node.js provider.
-- Extended Node.js provider formatter.
-- Introduced debug mode option. Enabled by default on atom dev mode.
+- New algorithm for iterative path search.
+- New extensible suggestion model based on path providers with own grammar and context.
+- Default suggestion provider for current-file path.
+- Default suggestion provider for paths relative to current file path.
+- Improvements suggestions look&feel.
+- New extensible formatter model for custom formatters integration.
+- New Node.js extended provider.
+- New Node.js formatter.
+- Manual suggestion mode enabled by default.
+- Redefined scope selectors.
+- improved scope selectors validation.
+- Default strategy to find most suitable provider based on priority and scope selectors.
+- Optional strategy to find All suitable providers based only on scope selectors. Disabled by default.
+- Added debug mode option. Enabled by default on atom dev mode.
