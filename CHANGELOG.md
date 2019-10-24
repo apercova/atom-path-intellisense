@@ -20,9 +20,9 @@ It´s possible to configure different scope descriptors in **scope-descriptors**
 - New extensible formatter model for custom formatters integration.
 - New Node.js extended provider.
 - New Node.js formatter.
+- Improved scope selectors validation.
 - Manual suggestion mode enabled by default.
-- Redefined scope selectors.
-- improved scope selectors validation.
+- Redefined allowed scope selectors.
 - Default strategy to find most suitable provider based on priority and scope selectors.
-- Optional strategy to find All suitable providers based only on scope selectors. Disabled by default.
+- Optional strategy to find all suitable providers based only on scope selectors. Disabled by default.
 - Added debug mode option. Enabled by default on atom dev mode.
