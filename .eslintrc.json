@@ -37,7 +37,7 @@
         "no-undefined": "error",
         "consistent-return": "error",
         "no-useless-return": "error",
-        "linebreak-style": ["warn","linux"],
+        "linebreak-style": ["warn","unix"],
         "no-extra-parens": "warn",
         "no-extra-label": "warn",
         "no-multi-spaces": "warn",
