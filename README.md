@@ -9,7 +9,7 @@ Autocomplete provider based on atom [autocomplete-plus](https://atom.io/packages
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/apercova/atom-path-intellisense/issues)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-### Current build status | __See [Change Log](CHANGELOG.md)__
+### Current build status | __See [Change Log :barber:](CHANGELOG.md)__
 | Linux & MacOS | Windows  |
 |---------------|----------|
 | [![Build Status](https://travis-ci.org/apercova/atom-path-intellisense.svg?branch=atom-ci)](https://travis-ci.org/apercova/atom-path-intellisense)        | [![Build status](https://ci.appveyor.com/api/projects/status/i39dfbmxa9usjqa1/branch/atom-ci?svg=true)](https://ci.appveyor.com/project/apercova/atom-path-intellisense/branch/atom-ci) |
