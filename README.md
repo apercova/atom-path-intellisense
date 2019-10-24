@@ -9,7 +9,7 @@ Autocomplete provider based on atom [autocomplete-plus](https://atom.io/packages
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/apercova/atom-path-intellisense/issues)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-### Current build status :factory: | [Change Log :barber:](CHANGELOG.md)
+### Current build status :factory: | See [Change Log :barber:](CHANGELOG.md)
 | Linux & MacOS | Windows  |
 |---------------|----------|
 | [![Build Status](https://travis-ci.org/apercova/atom-path-intellisense.svg?branch=atom-ci)](https://travis-ci.org/apercova/atom-path-intellisense)        | [![Build status](https://ci.appveyor.com/api/projects/status/i39dfbmxa9usjqa1/branch/atom-ci?svg=true)](https://ci.appveyor.com/project/apercova/atom-path-intellisense/branch/atom-ci) |
@@ -117,3 +117,8 @@ Enable / disable debug options. Note that Atom's dev mode `$ atom --dev .` overr
     "manual-suggest": true
     "provider-strategy-all": false
 ```
+
+### Acknowledgements
+- Scope selectors matching features are based on [`Atom`](https://github.com/atom) [`selectors.js`](https://github.com/atom/atom/blob/master/src/selectors.js).
+- Scope selectors cache is based on [`autocomplete-plus`](https://github.com/atom/autocomplete-plus) [`scope-helpers.js`](https://github.com/atom/autocomplete-plus/blob/master/lib/scope-helpers.js).
+- Spec test are based on [`autocomplete-paths`](https://github.com/atom-community/autocomplete-paths) [`specs`](https://github.com/atom-community/autocomplete-paths/tree/master/spec) ones.
