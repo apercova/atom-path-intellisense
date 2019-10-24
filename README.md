@@ -15,7 +15,7 @@ Autocomplete provider based on atom [autocomplete-plus](https://atom.io/packages
 
 ### Features
 :heavy_check_mark: Provides path suggestions based on typed path and context.  
-:heavy_check_mark: Suggestions are provided by pressing (**_ctrl_ + _space_**) shortcut by default. Uncheck  **manual-suggest** configuration setting to get suggestions at typing.  
+:heavy_check_mark: By default suggestions are provided by pressing `ctrl + space `. Uncheck  **`manual-suggest`** configuration setting to get suggestions at typing.  
 :heavy_check_mark: Suggestions are provided within valid configured scope selectors on **allowed-scopes** configuration setting. Default value covers pretty much languages but is extensible adding more scope selectors.  
 
   ``Note to developers``
