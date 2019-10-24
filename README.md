@@ -14,35 +14,33 @@ Autocomplete provider based on atom [autocomplete-plus](https://atom.io/packages
 |---------------|----------|
 | [![Build Status](https://travis-ci.org/apercova/atom-path-intellisense.svg?branch=atom-ci)](https://travis-ci.org/apercova/atom-path-intellisense)        | [![Build status](https://ci.appveyor.com/api/projects/status/i39dfbmxa9usjqa1/branch/atom-ci?svg=true)](https://ci.appveyor.com/project/apercova/atom-path-intellisense/branch/atom-ci) |
 
-### Features
-:heavy_check_mark: Provides path suggestions based on typed path and context.  
-:heavy_check_mark: By default suggestions are provided by pressing `ctrl + space `. Uncheck  **`manual-suggest`** configuration setting to get suggestions at typing.  
-:heavy_check_mark: Suggestions are provided within scope selectors configured on **` allowed-scopes `** configuration setting. Default selectors cover pretty much languages but is extensible by adding more scope selectors.  
-
-  ``Note to developers``
-  > If you find any selector combination that's missing or can improve this package make a PR with your add to **` allowed-scopes `** configuration setting.  
-  
-:heavy_check_mark: Escaping of single and double quotes is allowed for files and directories.  
-:heavy_check_mark: Path suggestions mechanism relies on providers for appropriate grammar and selectors. Default path providers are described below.
+### :muscle: Features 
+- Provides path suggestions based on typed path and context.
+- By default suggestions are provided by pressing `ctrl + space `. Uncheck  **`manual-suggest`** configuration setting to get suggestions at typing.
+- Suggestions are provided within scope selectors configured on **` allowed-scopes `** configuration setting. Default selectors cover pretty much languages but is extensible by adding more scope selectors.  
+  **` Note to developers `**
+  > `If you find any selector combination that's missing or can improve this package make a PR with your add to allowed-scopes configuration setting.`  
+- Escaping of single and double quotes is allowed for files and directories.
+- Path suggestions mechanism relies on providers for appropriate grammar and selectors. Default path providers are described below.
 
 ### Default providers
 Give path suggestions relative to current file path.
 
 #### Current file path provider
-##### **_Features_**
-:heavy_check_mark: Works out-of-the-box on allowed scope selectors.  
-:heavy_check_mark: Provides suggestions for current file path.  
+##### :muscle: **_Features_**
+- Works out-of-the-box on allowed scope selectors.
+- Provides suggestions for current file path.
 
 ![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/filepath_provider.gif)  
 
 #### Current file relative path provider
-##### **_Features_**
-:heavy_check_mark: Works out-of-the-box on allowed scope selectors.  
-:heavy_check_mark: Provides suggestions for paths relative to current file path.
-:heavy_check_mark: Relative suggestions are shown by typing self `./` or parent `../` directories.  
-:heavy_check_mark: Suggestions for paths relative to user's home directory are shown by typing: `~/`.  
-:heavy_check_mark: Suggestions for paths relative to current project directory are shown by typing forward slash: `/`.  
-  > When not in a project, suggestions fallback to FileSystem root directory shown files with appropriate permisions.  
+##### :muscle: **_Features_**
+- Works out-of-the-box on allowed scope selectors.
+- Provides suggestions for paths relative to current file path.
+- Relative suggestions are shown by typing self `./` or parent `../` directories.
+- Suggestions for paths relative to user's home directory are shown by typing: `~/`.
+- Suggestions for paths relative to current project directory are shown by typing forward slash: `/`.
+  > When not in a project, suggestions fallback to FileSystem root directory shown files with appropriate permisions.
 
 ![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/filepath_rel_provider.gif)  
 
@@ -69,13 +67,13 @@ An extended provider has to be in compliance with the following:
 
 #### Node.js path provider `Extended`
 Node.js path provider gives suggestions for Node.js module imports.  
-##### **_Features_**
-:heavy_check_mark: It's enabled only at `.source.js .string.quoted` scope selector.  
-:heavy_check_mark: It's enabled only at `require()` and ES6 module `import` statements.  
-:heavy_check_mark: Provides suggestions for Node.js built-in modules, local modules on project `node_modules` directory and modules relative to current file.  
-:heavy_check_mark: Filters JavaScript files by `.js` extension.  
-:heavy_check_mark: Removes file extension at selecting any suggestion.  
-:heavy_check_mark:- Gets complemented by _Current file relative path provider_  provider on ES6 module `import` statements for relative paths. Eg. `import settings from './config/settings.js'`.  
+##### :muscle: **_Features_**
+- It's enabled only at `.source.js .string.quoted` scope selector.
+- It's enabled only at `require()` and ES6 module `import` statements.
+- Provides suggestions for Node.js built-in modules, local modules on project `node_modules` directory and modules relative to current file.
+- Filters JavaScript files by `.js` extension.
+- Removes file extension at selecting any suggestion.
+- Gets complemented by _Current file relative path provider_  provider on ES6 module `import` statements for relative paths. Eg. `import settings from './config/settings.js'`.
 
 ![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/node_provider.gif)
 
