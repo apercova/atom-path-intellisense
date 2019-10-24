@@ -1,35 +1,62 @@
 'use strict';
-const gulp = require('gulp');
-const minify = require('gulp-minify');
-const tar = require('gulp-tar');
-const untar = require('gulp-untar');
-const gzip = require('gulp-gzip');
-const gunzip = require('gulp-gunzip');
-const del = require('del');
-const jsdoc = require('gulp-jsdoc3');
-const prettierEslint = require('gulp-prettier-eslint');
-const eslint = require('gulp-eslint');
-const merge = require('merge-stream');
+const gulp = require('gulp'),
+    minify = require('gulp-minify'),
+    tar = require('gulp-tar'),
+    untar = require('gulp-untar'),
+    gzip = require('gulp-gzip'),
+    gunzip = require('gulp-gunzip'),
+    del = require('del'),
+    jsdoc = require('gulp-jsdoc3'),
+    prettierEslint = require('gulp-prettier-eslint'),
+    eslint = require('gulp-eslint');
 
-const copied = false;
 /**
- * Gulp task for prettifying code.
+ * Task for generate docs.
  */
-gulp.task('prettify-eslint', async () => {
+gulp.task('docs', cb => {
+    del('docs/**');
+    return gulp
+        .src(['README.md', './lib/**/*.js'], { read: false })
+        .pipe(jsdoc(cb));
+});
+
+/**
+ * Task for backup source files.
+ */
+gulp.task('source:backup', () => {
+    return gulp
+        .src([
+            '**',
+            '!.git/**',
+            '!.docs/**',
+            '!node_modules/**',
+            '!atom-path-intellisense-source.tar.gz'
+        ])
+        .pipe(tar('atom-path-intellisense-source.tar'))
+        .pipe(gzip())
+        .pipe(gulp.dest('.'));
+});
+
+/**
+ * Task for prettify source files.
+ */
+gulp.task('source:prettify', () => {
     gulp.src('lib/**/*.js')
         .pipe(prettierEslint())
         .pipe(gulp.dest('./lib'));
     gulp.src('spec/**/*.js')
         .pipe(prettierEslint())
         .pipe(gulp.dest('./spec'));
-    gulp.src('.gulpfile.js')
+    return gulp
+        .src('gulpfile.js')
         .pipe(prettierEslint())
         .pipe(gulp.dest('.'));
 });
+
 /**
- * Gulp task for linting code with eslint.
+ * Task for lint source files with eslint.
  */
-gulp.task('lint-eslint', () => {
+gulp.task('source:lint', () => {
     return gulp
         .src(['lib/**/*.js', 'spec/**/*.js', 'gulpfile.js', '.eslintrc.json'])
         .pipe(eslint())
@@ -37,27 +64,63 @@ gulp.task('lint-eslint', () => {
         .pipe(eslint.failAfterError());
 });
 
-gulp.task('clean_source', async () => {
-    await del(['source', 'atom-path-intellisense.source.tar.gz']);
+/**
+ * Task for minify source files.
+ */
+gulp.task('source:minify', () => {
+    gulp.src(['spec/**/*.js'], { allowEmpty: true })
+        .pipe(
+            minify({
+                noSource: true,
+                ext: {
+                    src: '.js',
+                    min: '.js'
+                }
+            })
+        )
+        .pipe(gulp.dest('spec/'));
+    return gulp
+        .src(['lib/**/*.js'], { allowEmpty: true })
+        .pipe(
+            minify({
+                noSource: true,
+                ext: {
+                    src: '.js',
+                    min: '.js'
+                }
+            })
+        )
+        .pipe(gulp.dest('lib/'));
 });
 
-gulp.task('copy_source', async (done) => {
-    gulp.src(['assets/**']).pipe(gulp.dest('source/assets'));
-    gulp.src(['lib/**']).pipe(gulp.dest('source/lib'));
-    gulp.src(['spec/**']).pipe(gulp.dest('source/spec'));
-    gulp.src(['styles/**']).pipe(gulp.dest('source/styles'));
-    done();
-});
-
-gulp.task('tar_source', async () => {
-
-    await gulp.src('source/**/*')
-        .pipe(tar('atom-path-intellisense.source.tar'))
-        .pipe(gzip())
+/**
+ * Task for restore source files from tarball.
+ */
+gulp.task('source:restore', function() {
+    del([
+        '**',
+        '!.git/**',
+        '!.docs/**',
+        '!node_modules/**',
+        '!atom-path-intellisense-source.tar.gz'
+    ]);
+    return gulp
+        .src('atom-path-intellisense-source.tar.gz')
+        .pipe(gunzip())
+        .pipe(untar())
         .pipe(gulp.dest('.'));
 });
 
+/**
+ * Task for prepare release artifacts.
+ */
 gulp.task(
-    'backup_source',
-    gulp.series(['clean_source', 'copy_source', 'tar_source'])
+    'release:prepare',
+    gulp.series([
+        'source:lint',
+        'source:prettify',
+        'source:backup',
+        'docs',
+        'source:minify'
+    ])
 );
