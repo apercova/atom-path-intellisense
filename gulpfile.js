@@ -1,14 +1,24 @@
 'use strict';
-const gulp = require('gulp'),
-    minify = require('gulp-minify'),
-    tar = require('gulp-tar'),
-    untar = require('gulp-untar'),
-    gzip = require('gulp-gzip'),
+/**
+ *
+ * @description Gulp configuration file.
+ * @author
+ *  [{@link https://github.com/apercova|github@apercova}],
+ *  [{@link https://twitter.com/apercova|twitter@apercova}],
+ *  [{@link https://www.npmjs.com/~apercova|npmjs/~apercova}]
+ *
+ * @since 1.2.0
+ */
+const del = require('del'),
+    gulp = require('gulp'),
+    eslint = require('gulp-eslint'),
     gunzip = require('gulp-gunzip'),
-    del = require('del'),
+    gzip = require('gulp-gzip'),
     jsdoc = require('gulp-jsdoc3'),
+    minify = require('gulp-minify'),
     prettierEslint = require('gulp-prettier-eslint'),
-    eslint = require('gulp-eslint');
+    tar = require('gulp-tar'),
+    untar = require('gulp-untar');
 
 /**
  * Task for generate docs.
