@@ -121,4 +121,4 @@ Enable / disable debug options. Note that Atom's dev mode `$ atom --dev .` overr
 ### Acknowledgements
 - Scope selectors matching features are based on [`Atom`](https://github.com/atom) [`selectors.js`](https://github.com/atom/atom/blob/master/src/selectors.js).
 - Scope selectors cache is based on [`autocomplete-plus`](https://github.com/atom/autocomplete-plus) [`scope-helpers.js`](https://github.com/atom/autocomplete-plus/blob/master/lib/scope-helpers.js).
-- Spec test are based on [`autocomplete-paths`](https://github.com/atom-community/autocomplete-paths) [`specs`](https://github.com/atom-community/autocomplete-paths/tree/master/spec) ones.
+- Specs are based on [`autocomplete-paths`](https://github.com/atom-community/autocomplete-paths) [`specs`](https://github.com/atom-community/autocomplete-paths/tree/master/spec) ones.
