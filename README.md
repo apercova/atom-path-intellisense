@@ -16,10 +16,10 @@ Autocomplete provider based on atom [autocomplete-plus](https://atom.io/packages
 ### Features
 :heavy_check_mark: Provides path suggestions based on typed path and context.  
 :heavy_check_mark: By default suggestions are provided by pressing `ctrl + space `. Uncheck  **`manual-suggest`** configuration setting to get suggestions at typing.  
-:heavy_check_mark: Suggestions are provided within valid configured scope selectors on **allowed-scopes** configuration setting. Default value covers pretty much languages but is extensible adding more scope selectors.  
+:heavy_check_mark: Suggestions are provided within scope selectors configured on **` allowed-scopes `** configuration setting. Default selectors cover pretty much languages but is extensible by adding more scope selectors.  
 
   ``Note to developers``
-  > If you find any selector that could improve this package make a pull request for default **allowed-scopes** configuration setting value.  
+  > If you find any selector combination that's missing or can improve this package make a PR with your add to **` allowed-scopes `** configuration setting.  
   
 :heavy_check_mark: Escaping of single and double quotes is allowed for files and directories.  
 :heavy_check_mark: Path suggestions mechanism relies on providers for appropriate grammar and selectors. Default path providers are described below.
@@ -85,27 +85,27 @@ Install from atom´s **_settings/packages_** tab or run following command on a t
 ```
 
 ### Configuration
-This package exports following configuration settings to **config.cson** file:  
-##### manual-suggest
-> if enabled (**recomended**), suggestions are shown by pressing `ctrl` + `space` shortcut. Uncheck to get suggestions at typing.   
-- Type:    `boolean`
-- Default: `true`
+This package exports following configuration settings to **` config.cson `** file:  
+##### `manual-suggest`
+If enabled (**recomended**), suggestions are provided by pressing `ctrl + space `. Uncheck to get suggestions at typing.  
+- _Type:_     `boolean`
+- _Default:_  `true`
 
-##### scope-descriptors
-> [Scope selectors](https://flight-manual.atom.io/behind-atom/sections/scoped-settings-scopes-and-scope-descriptors/) (__can be comma-  separated__) for which suggestions are shown. Apply to current file's relative-path suggestion providers. Other providers specify more specific selectors.  
+##### `scope-descriptors`
+[Scope selectors](https://flight-manual.atom.io/behind-atom/sections/scoped-settings-scopes-and-scope-descriptors/) (__can be comma-  separated__) for which suggestions are shown. Apply to current file's relative-path suggestion providers. Other providers specify more specific selectors.  
 See: [Scope Selectors Reference](https://flight-manual.atom.io/behind-atom/sections/scoped-settings-scopes-and-scope-descriptors/#scope-selectors)  
-- Type:    `string`
-- Default: `'.source .string, .source.shell, .text .string, .text.html.basic'`
+- _Type:_     `string`
+- _Default:_  `'.source .string, .source.shell, .text .string, .text.html.basic'`
 
-##### provider-strategy-all
-> If enabled, All providers that can resolve suggestions are called __(A bit lower operation)__.
-- Type:    `boolean`
-- Default: `false`
+##### `provider-strategy-all`
+If enabled, All suitable providers that can resolve suggestions are called __(a bit lower operation)__.
+- _Type:_     `boolean`
+- _Default:_  `false`
 
-##### enable-debug
-> Enable / disable debug options. Note that Atom's dev mode `$ atom --dev .` overrides this setting.
-- Type: `boolean`
-- Default: 
+##### `enable-debug`
+Enable / disable debug options. Note that Atom's dev mode `$ atom --dev .` overrides this setting.
+- _Type:_     `boolean`
+- _Default:_ 
   - `true` if Atom's dev mode `$ atom --dev .` is enabled.
   - `false` otherwise. 
 
