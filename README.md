@@ -66,7 +66,7 @@ Autocomplete provider based on atom [autocomplete-plus](https://atom.io/packages
 - Removes file extension at selecting any suggestion.
 - Gets complemented by _Default path providers_ for path suggestions on broader scopes.
 
-![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/node_provider.gif)
+![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/less_provider.gif)
 
 ### Installation
 Install from atom´s **_settings/packages_** tab or run following command on a terminal:
