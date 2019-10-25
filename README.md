@@ -108,7 +108,7 @@ Enable / disable debug options. Note that Atom's dev mode `$ atom --dev .` overr
     "manual-suggest": true
     "provider-strategy-all": false
 ```
-### Default Providers :interrobang:
+### Default Providers :dart:
 Default providers are the very basic path suggestion providers on this package.  
 Default providers give path suggestions for paths relative to current file.
 
@@ -130,7 +130,7 @@ An extended provider has to be in compliance with the following:
   - Extend base class `BaseFormatter`.  
   - Implement `format` method in order to format raw suggestions.
 
-### Acknowledgements
+### Acknowledgements :trophy:
 - Scope selectors matching features are based on [`Atom`](https://github.com/atom) [`selectors.js`](https://github.com/atom/atom/blob/master/src/selectors.js).
 - Scope selectors cache is based on [`autocomplete-plus`](https://github.com/atom/autocomplete-plus) [`scope-helpers.js`](https://github.com/atom/autocomplete-plus/blob/master/lib/scope-helpers.js).
 - Specs are based on [`autocomplete-paths`](https://github.com/atom-community/autocomplete-paths) [`specs`](https://github.com/atom-community/autocomplete-paths/tree/master/spec) ones.
