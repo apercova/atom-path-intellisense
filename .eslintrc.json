@@ -37,11 +37,11 @@
         "no-undefined": "error",
         "consistent-return": "error",
         "no-useless-return": "error",
+        "no-unused-vars": "error",
         "linebreak-style": ["warn","unix"],
         "no-extra-parens": "warn",
         "no-extra-label": "warn",
         "no-multi-spaces": "warn",
-        "valid-jsdoc": "warn",
-        "no-unused-vars": "warn"
+        "valid-jsdoc": "warn"
     }
 }
