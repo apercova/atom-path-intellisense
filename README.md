@@ -23,17 +23,15 @@ Autocomplete provider based on atom [autocomplete-plus](https://atom.io/packages
 - Escaping of single and double quotes is allowed for files and directories.
 - Path suggestions mechanism relies on providers for appropriate grammar and selectors. Default path providers are described below.
 
-### Default providers
-Give path suggestions relative to current file path.
-
-#### Current file path provider
+### Providers
+#### Current file path provider _`Default`_
 ##### :muscle: **_Features_**
 - Works out-of-the-box on allowed scope selectors.
 - Provides suggestions for current file path.
 
 ![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/filepath_provider.gif)  
 
-#### Current file relative path provider
+#### Current file relative path provider _`Default`_
 ##### :muscle: **_Features_**
 - Works out-of-the-box on allowed scope selectors.
 - Provides suggestions for paths relative to current file path.
@@ -45,35 +43,28 @@ Give path suggestions relative to current file path.
 ![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/filepath_rel_provider.gif)  
 
 ![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/filepath_rel_provider_home.gif)  
-  
 
-### Extended providers
-Atom-path-intellisense is not only based on default suggestion providers. 
-Decoupling path suggestions mechanism from autocomplete-plus provider API gives the advantage of writing extended providers that cover more specific contexts and can be formatted in their own way.
-
-> We refer as extended providers to providers targeted to a specific language or more specific scope selectors and context.
-
-An extended provider has to be in compliance with the following:
-- Extend base class `BasePathProvider`.  
-- Implement following methods:
-  - `canResolve()`
-  - `resolve()`
-  - `activate`. (optional)
-  - `deactivate`. (optional)
-- Optionally use a custom formatter. Eg. to trim file extensions.
-  Custom formatters have to be in compliance with the following:  
-  - Extend base class `BaseFormatter`.  
-  - Implement `format` method in order to format raw suggestions.
-
-#### Node.js path provider `Extended`
-Node.js path provider gives suggestions for Node.js module imports.  
+#### Node.js path provider _`Extended`_
+[Node.js](nodejs.org/) path provider gives suggestions for Node.js module imports.  
 ##### :muscle: **_Features_**
 - It's enabled only at `.source.js .string.quoted` scope selector.
 - It's enabled only at `require()` and ES6 module `import` statements.
 - Provides suggestions for Node.js built-in modules, local modules on project `node_modules` directory and modules relative to current file.
 - Filters JavaScript files by `.js` extension.
 - Removes file extension at selecting any suggestion.
-- Gets complemented by _Current file relative path provider_  provider on ES6 module `import` statements for relative paths. Eg. `import settings from './config/settings.js'`.
+- Gets complemented by _Current file relative path provider_ provider on ES6 module `import` statements for relative paths. Eg. `import settings from './config/settings.js'`.
+- Gets complemented by _Default path providers_ for path suggestions on broader scopes.
+
+![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/node_provider.gif)
+
+#### Less path provider _`Extended`_
+[Less](http://lesscss.org/) path provider gives suggestions for Less imports.  
+##### :muscle: **_Features_**
+- It's enabled only at `.source.css.less .string` scope selector.
+- It's enabled only at `@import` less statements.
+- Filters less files by `.less` extension.
+- Removes file extension at selecting any suggestion.
+- Gets complemented by _Default path providers_ for path suggestions on broader scopes.
 
 ![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/node_provider.gif)
 
@@ -117,8 +108,29 @@ Enable / disable debug options. Note that Atom's dev mode `$ atom --dev .` overr
     "manual-suggest": true
     "provider-strategy-all": false
 ```
+### Default Providers :dart:
+Default providers are the very basic path suggestion providers on this package.  
+Default providers give path suggestions for paths relative to current file.
 
-### Acknowledgements
+### Extended providers ❤
+Atom-path-intellisense is not only based on default suggestion providers. 
+Decoupling path suggestions mechanism from autocomplete-plus provider API gives the advantage of writing extended providers that cover more specific contexts and can be formatted in their own way.
+
+> We refer as extended providers to providers targeted to a specific language or more specific scope selectors and context.
+
+An extended provider has to be in compliance with the following:
+- Extend base class `BasePathProvider`.  
+- Implement following methods:
+  - `canResolve()`
+  - `resolve()`
+  - `activate`. (optional)
+  - `deactivate`. (optional)
+- Optionally use a custom formatter. Eg. to trim file extensions.
+  Custom formatters have to be in compliance with the following:  
+  - Extend base class `BaseFormatter`.  
+  - Implement `format` method in order to format raw suggestions.
+
+### Acknowledgements :trophy:
 - Scope selectors matching features are based on [`Atom`](https://github.com/atom) [`selectors.js`](https://github.com/atom/atom/blob/master/src/selectors.js).
 - Scope selectors cache is based on [`autocomplete-plus`](https://github.com/atom/autocomplete-plus) [`scope-helpers.js`](https://github.com/atom/autocomplete-plus/blob/master/lib/scope-helpers.js).
 - Specs are based on [`autocomplete-paths`](https://github.com/atom-community/autocomplete-paths) [`specs`](https://github.com/atom-community/autocomplete-paths/tree/master/spec) ones.
