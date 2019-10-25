@@ -23,17 +23,15 @@ Autocomplete provider based on atom [autocomplete-plus](https://atom.io/packages
 - Escaping of single and double quotes is allowed for files and directories.
 - Path suggestions mechanism relies on providers for appropriate grammar and selectors. Default path providers are described below.
 
-### Default providers
-Give path suggestions relative to current file path.
-
-#### Current file path provider
+### Providers
+#### Current file path provider _`Default`_
 ##### :muscle: **_Features_**
 - Works out-of-the-box on allowed scope selectors.
 - Provides suggestions for current file path.
 
 ![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/filepath_provider.gif)  
 
-#### Current file relative path provider
+#### Current file relative path provider _`Default`_
 ##### :muscle: **_Features_**
 - Works out-of-the-box on allowed scope selectors.
 - Provides suggestions for paths relative to current file path.
@@ -110,8 +108,11 @@ Enable / disable debug options. Note that Atom's dev mode `$ atom --dev .` overr
     "manual-suggest": true
     "provider-strategy-all": false
 ```
+### Default Providers :interrobang:
+Default providers are the very basic path suggestion providers on this package.  
+Default providers give path suggestions for paths relative to current file.
 
-### Extended providers
+### Extended providers ❤
 Atom-path-intellisense is not only based on default suggestion providers. 
 Decoupling path suggestions mechanism from autocomplete-plus provider API gives the advantage of writing extended providers that cover more specific contexts and can be formatted in their own way.
 
