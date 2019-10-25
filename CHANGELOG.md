@@ -18,8 +18,9 @@ It´s possible to configure different scope descriptors in **scope-descriptors**
 - Default suggestion provider for paths relative to current file path.
 - Improvements suggestions look&feel.
 - New extensible formatter model for custom formatters integration.
-- New Node.js extended provider.
+- New Node.js path suggestions provider.
 - New Node.js formatter.
+- New Less path suggestions provider.
 - Improved scope selectors validation.
 - Manual suggestion mode enabled by default.
 - Redefined allowed scope selectors.
