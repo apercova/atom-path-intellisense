@@ -45,25 +45,6 @@ Give path suggestions relative to current file path.
 ![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/filepath_rel_provider.gif)  
 
 ![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/filepath_rel_provider_home.gif)  
-  
-
-### Extended providers
-Atom-path-intellisense is not only based on default suggestion providers. 
-Decoupling path suggestions mechanism from autocomplete-plus provider API gives the advantage of writing extended providers that cover more specific contexts and can be formatted in their own way.
-
-> We refer as extended providers to providers targeted to a specific language or more specific scope selectors and context.
-
-An extended provider has to be in compliance with the following:
-- Extend base class `BasePathProvider`.  
-- Implement following methods:
-  - `canResolve()`
-  - `resolve()`
-  - `activate`. (optional)
-  - `deactivate`. (optional)
-- Optionally use a custom formatter. Eg. to trim file extensions.
-  Custom formatters have to be in compliance with the following:  
-  - Extend base class `BaseFormatter`.  
-  - Implement `format` method in order to format raw suggestions.
 
 #### Node.js path provider _`Extended`_
 [Node.js](nodejs.org/) path provider gives suggestions for Node.js module imports.  
@@ -129,6 +110,24 @@ Enable / disable debug options. Note that Atom's dev mode `$ atom --dev .` overr
     "manual-suggest": true
     "provider-strategy-all": false
 ```
+
+### Extended providers
+Atom-path-intellisense is not only based on default suggestion providers. 
+Decoupling path suggestions mechanism from autocomplete-plus provider API gives the advantage of writing extended providers that cover more specific contexts and can be formatted in their own way.
+
+> We refer as extended providers to providers targeted to a specific language or more specific scope selectors and context.
+
+An extended provider has to be in compliance with the following:
+- Extend base class `BasePathProvider`.  
+- Implement following methods:
+  - `canResolve()`
+  - `resolve()`
+  - `activate`. (optional)
+  - `deactivate`. (optional)
+- Optionally use a custom formatter. Eg. to trim file extensions.
+  Custom formatters have to be in compliance with the following:  
+  - Extend base class `BaseFormatter`.  
+  - Implement `format` method in order to format raw suggestions.
 
 ### Acknowledgements
 - Scope selectors matching features are based on [`Atom`](https://github.com/atom) [`selectors.js`](https://github.com/atom/atom/blob/master/src/selectors.js).
