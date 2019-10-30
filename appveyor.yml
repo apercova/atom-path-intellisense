@@ -13,8 +13,8 @@ build_script:
 
 branches:
   only:
+    - master
     - atom-ci
-    - docs
     - release-1.2.0
 
 version: "{build}"
