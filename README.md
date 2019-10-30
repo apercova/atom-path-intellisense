@@ -24,6 +24,10 @@ Autocomplete provider based on atom [autocomplete-plus](https://atom.io/packages
 - Path suggestions mechanism relies on providers for appropriate grammar and selectors. Default path providers are described below.
 
 ### Providers
+
+#### Default Providers :dart:
+Default providers are the very basic path suggestion providers on this package given path suggestions for paths relative to current file and working out of the box on all allowed scopes.
+
 #### Current file path provider _`Default`_
 ##### :muscle: **_Features_**
 - Works out-of-the-box on allowed scope selectors.
@@ -43,6 +47,27 @@ Autocomplete provider based on atom [autocomplete-plus](https://atom.io/packages
 ![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/filepath_rel_provider.gif)  
 
 ![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/filepath_rel_provider_home.gif)  
+
+#### Extended providers ❤
+Atom-path-intellisense is not only based on default providers. 
+Decoupling path suggestions mechanism from autocomplete-plus provider API gives the advantage of writing extended providers that cover more specific contexts and can be formatted in their own way.
+
+> We refer as extended providers to providers targeted to a specific language or more specific scope selectors and context.
+
+See more of [EXTENDED_PROVIDERS](EXTENDED_PROVIDERS.md)  
+
+An extended provider has to be in compliance with the following:
+- Extend base class `BasePathProvider`.  
+- Implement following methods:
+  - `canResolve()`
+  - `resolve()`
+  - `activate`. (optional)
+  - `deactivate`. (optional)
+- Optionally use a custom formatter. Eg. to trim file extensions.
+  Custom formatters have to be in compliance with the following:  
+  - Extend base class `BaseFormatter`.  
+  - Implement `format` method in order to format raw suggestions.
+
 
 #### Node.js path provider _`Extended`_
 [Node.js](nodejs.org/) path provider gives suggestions for Node.js module imports.  
