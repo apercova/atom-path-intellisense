@@ -27,13 +27,8 @@ notifications:
 
 branches:
   only:
-<<<<<<< HEAD
     - master
     - atom-ci
-=======
-    - atom-ci
-    - docs
->>>>>>> master
     - release-1.2.0
 
 git:
