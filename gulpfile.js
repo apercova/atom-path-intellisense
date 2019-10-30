@@ -25,7 +25,8 @@ const del = require('del'),
  */
 gulp.task('docs', cb => {
   del('docs/**');
-  return gulp.src(['README.md', './lib/**/*.js'], { read: false }).pipe(jsdoc(cb));
+  const config = require('./jsdoc.json');
+  gulp.src(['README.md', './lib/**/*.js'], { read: true }).pipe(jsdoc(config, cb));
 });
 
 /**
@@ -113,4 +114,4 @@ gulp.task('source:restore', function() {
 /**
  * Task for prepare release artifacts.
  */
-gulp.task('release:prepare', gulp.series(['source:lint', 'source:prettify', 'source:backup', 'docs', 'source:minify']));
+gulp.task('release:prepare', gulp.series(['source:lint', 'source:prettify', 'docs']));

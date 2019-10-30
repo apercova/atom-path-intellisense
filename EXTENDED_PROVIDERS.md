@@ -29,28 +29,3 @@ An extended provider has to be in compliance with the following:
 - Gets complemented by _Default path providers_ for path suggestions on broader scopes.
 
 ![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/node_provider.gif)
-
-### Less path provider _`Extended`_
-[Less](http://lesscss.org/) path provider gives suggestions for Less imports.  
-##### :muscle: **_Features_**
-- It's enabled only at `.source.css.less .meta.at-rule.import.css` scope selector.
-- It's enabled only at `@import` less statements.
-- Filters files by `.less` extension.
-- Removes file extension at selecting any suggestion.
-- Gets complemented by _Default path providers_ for path suggestions on broader scopes.
-
-![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/less_provider.gif)
-
-### Sass path provider _`Extended`_
-[Less](http://lesscss.org/) path provider gives suggestions for Less imports.  
-##### :muscle: **_Features_**
-- It's enabled only at following scope selectors:
-  - `.source.sass .meta.at-rule.import.sass`
-  - `.source.sass .meta.selector.css`
-  - `.source.css.scss .meta.at-rule.import.scss .string`
-- It's enabled at `@import`, `@use` and `@forward` sass statements.
-- Filters less files by `.scss`, `.sass` and `.css` extension.
-- Removes file extension at selecting any suggestion.
-- Gets complemented by _Default path providers_ for path suggestions on broader scopes.
-
-![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/sass_provider.gif)

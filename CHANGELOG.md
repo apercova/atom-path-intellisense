@@ -20,7 +20,6 @@ It´s possible to configure different scope descriptors in **scope-descriptors**
 - New extensible formatter model for custom formatters integration.
 - New Node.js path suggestions provider.
 - New Node.js formatter.
-- New Less path suggestions provider.
 - Improved scope selectors validation.
 - Manual suggestion mode enabled by default.
 - Redefined allowed scope selectors.
