@@ -3,16 +3,16 @@
 Autocomplete provider based on atom [autocomplete-plus](https://atom.io/packages/autocomplete-plus) package.  
 [![APM](https://img.shields.io/apm/v/atom-path-intellisense?style=plastic)](https://atom.io/packages/atom-path-intellisense)
 [![APM](https://img.shields.io/apm/dm/atom-path-intellisense?color=%23cc6677&style=plastic)](https://atom.io/packages/atom-path-intellisense)
-[![Inline docs](http://inch-ci.org/github/apercova/atom-path-intellisense.svg?branch=atom-ci)](http://inch-ci.org/github/apercova/atom-path-intellisense)
+[![Inline docs](http://inch-ci.org/github/apercova/atom-path-intellisense.svg?branch=master)](http://inch-ci.org/github/apercova/atom-path-intellisense)
 [![Maintainability](https://api.codeclimate.com/v1/badges/5cb79bcbdcfc1db02a51/maintainability)](https://codeclimate.com/github/apercova/atom-path-intellisense/maintainability)
 [![built with gulp](https://img.shields.io/badge/gulp-ships_this_project-eb4a4b.svg?logo=data%3Aimage%2Fpng%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAAAYAAAAOCAMAAAA7QZ0XAAAABlBMVEUAAAD%2F%2F%2F%2Bl2Z%2FdAAAAAXRSTlMAQObYZgAAABdJREFUeAFjAAFGRjSSEQzwUgwQkjAFAAtaAD0Ls2nMAAAAAElFTkSuQmCC)](http://gulpjs.com/)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/apercova/atom-path-intellisense/issues)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-### Current build status :factory: | See [Change Log :barber:](https://github.com/apercova/atom-path-intellisense/blob/atom-ci/CHANGELOG.md)
+### Current build status :factory: | See [Change Log :barber:](https://github.com/apercova/atom-path-intellisense/blob/master/CHANGELOG.md)
 | Linux & MacOS | Windows  |
 |---------------|----------|
-| [![Build Status](https://travis-ci.org/apercova/atom-path-intellisense.svg?branch=atom-ci)](https://travis-ci.org/apercova/atom-path-intellisense)        | [![Build status](https://ci.appveyor.com/api/projects/status/i39dfbmxa9usjqa1/branch/atom-ci?svg=true)](https://ci.appveyor.com/project/apercova/atom-path-intellisense/branch/atom-ci) |
+| [![Build Status](https://travis-ci.org/apercova/atom-path-intellisense.svg?branch=master)](https://travis-ci.org/apercova/atom-path-intellisense)        | [![Build status](https://ci.appveyor.com/api/projects/status/i39dfbmxa9usjqa1/branch/master?svg=true)](https://ci.appveyor.com/project/apercova/atom-path-intellisense/branch/master) |
 
 ## Features
 - Provides path suggestions based on typed path and context.
@@ -53,7 +53,7 @@ Decoupling path suggestions mechanism from autocomplete-plus provider API gives 
 
 > We refer as extended providers to providers targeted to a specific language or more specific scope selectors and context.
 
-See more [extended providers](https://github.com/apercova/atom-path-intellisense/blob/atom-ci/EXTENDED_PROVIDERS.md)  
+See more [extended providers](https://github.com/apercova/atom-path-intellisense/blob/master/EXTENDED_PROVIDERS.md)  
 
 ## Installation
 Install from atom´s **_settings/packages_** tab or run following command on a terminal:
