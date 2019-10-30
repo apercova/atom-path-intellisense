@@ -1,4 +1,4 @@
-# [atom-path-intellisense](https://atom.io/packages/atom-path-intellisense) [![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/logo/Icon-64.png)](https://atom.io/packages/atom-path-intellisense)
+# [atom-path-intellisense](https://atom.io/packages/atom-path-intellisense) [![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/logo/Icon-80.png)](https://atom.io/packages/atom-path-intellisense)
 ### Path Intellisense support for atom.  
 Autocomplete provider based on atom [autocomplete-plus](https://atom.io/packages/autocomplete-plus) package.  
 [![APM](https://img.shields.io/apm/v/atom-path-intellisense?style=plastic)](https://atom.io/packages/atom-path-intellisense)
