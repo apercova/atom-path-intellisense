@@ -9,7 +9,7 @@ Autocomplete provider based on atom [autocomplete-plus](https://atom.io/packages
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/apercova/atom-path-intellisense/issues)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-### Current build status :factory: | See [Change Log :barber:](https://github.com/apercova/atom-path-intellisense/blob/remove-providers/CHANGELOG.md)
+### Current build status :factory: | See [Change Log :barber:](https://github.com/apercova/atom-path-intellisense/blob/atom-ci/CHANGELOG.md)
 | Linux & MacOS | Windows  |
 |---------------|----------|
 | [![Build Status](https://travis-ci.org/apercova/atom-path-intellisense.svg?branch=atom-ci)](https://travis-ci.org/apercova/atom-path-intellisense)        | [![Build status](https://ci.appveyor.com/api/projects/status/i39dfbmxa9usjqa1/branch/atom-ci?svg=true)](https://ci.appveyor.com/project/apercova/atom-path-intellisense/branch/atom-ci) |
@@ -53,7 +53,7 @@ Decoupling path suggestions mechanism from autocomplete-plus provider API gives 
 
 > We refer as extended providers to providers targeted to a specific language or more specific scope selectors and context.
 
-See more [extended providers](https://github.com/apercova/atom-path-intellisense/blob/remove-providers/EXTENDED_PROVIDERS.md)  
+See more [extended providers](https://github.com/apercova/atom-path-intellisense/blob/atom-ci/EXTENDED_PROVIDERS.md)  
 
 ## Installation
 Install from atom´s **_settings/packages_** tab or run following command on a terminal:
