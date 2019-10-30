@@ -1,0 +1,11 @@
+{
+  "opts": {
+    "destination": "./docs"
+  },
+  "templates": {
+    "cleverLinks": true,
+    "monospaceLinks": true,
+    "path": "ink-docstrap",
+    "theme": "readable"
+  }
+}
