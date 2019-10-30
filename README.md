@@ -47,13 +47,13 @@ Default providers are the very basic path suggestion providers on this package g
 
 ![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/filepath_rel_provider_home.gif)  
 
-### Extended providers ❤
+### [Extended Providers](https://github.com/apercova/atom-path-intellisense/blob/master/EXTENDED_PROVIDERS.md) ❤
 Atom-path-intellisense is not only based on default providers.
 Decoupling path suggestions mechanism from autocomplete-plus provider API gives the advantage of writing extended providers that cover more specific contexts and can be formatted in their own way.
 
 > We refer as extended providers to providers targeted to a specific language or more specific scope selectors and context.
 
-See more [extended providers](https://github.com/apercova/atom-path-intellisense/blob/master/EXTENDED_PROVIDERS.md)  
+See more of [extended providers ...](https://github.com/apercova/atom-path-intellisense/blob/master/EXTENDED_PROVIDERS.md)  
 
 ## Installation
 Install from atom´s **_settings/packages_** tab or run following command on a terminal:
