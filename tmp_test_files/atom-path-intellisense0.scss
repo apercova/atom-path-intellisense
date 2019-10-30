@@ -1,0 +1,15 @@
+
+autocomplete-suggestion-list .pi-rlabel.file,
+autocomplete-suggestion-list .pi-rlabel.directory
+autocomplete-suggestion-list .pi-rlabel.bimodule
+{
+  font-style: italic;
+  font-weight: lighter;
+}
+
+autocomplete-suggestion-list .pi-rlabel.file .tag,
+autocomplete-suggestion-list .pi-rlabel.directory .tag
+autocomplete-suggestion-list .pi-rlabel.bimodule .tag
+{
+  font-variant: small-caps;
+}
