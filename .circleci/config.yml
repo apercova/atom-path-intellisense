@@ -43,10 +43,14 @@ jobs:
     - run:
         name: Run package tests on stable channel
         command: ./build-package.sh
+    # On MacOS:
+    # - run: caffeinate -s build-package.sh
         environment:
           ATOM_CHANNEL: "stable"
     - run:
         name: Run package tests on beta channel
         command: ./build-package.sh
+    # On MacOS:
+    # - run: caffeinate -s build-package.sh
         environment:
-          ATOM_CHANNEL: "stable"
+          ATOM_CHANNEL: "beta"
