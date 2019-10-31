@@ -49,4 +49,4 @@ jobs:
         name: Run package tests on beta channel
         command: ./build-package.sh
         environment:
-          ATOM_CHANNEL: "beta"
+          ATOM_CHANNEL: "stable"
