@@ -44,7 +44,7 @@ jobs:
     - run:
         name: Run package tests
         command: ./build-package.sh
-  test:
+  build-beta:
     working_directory: /tmp/project
     environment:
       # Required:
