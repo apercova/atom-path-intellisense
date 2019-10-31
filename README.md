@@ -10,9 +10,9 @@ Autocomplete provider based on atom [autocomplete-plus](https://atom.io/packages
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ### Current build status :factory: | See [Change Log :barber:](https://github.com/apercova/atom-path-intellisense/blob/master/CHANGELOG.md)
-| Linux & MacOS | Windows  |
-|---------------|----------|
-| [![Build Status](https://travis-ci.org/apercova/atom-path-intellisense.svg?branch=master)](https://travis-ci.org/apercova/atom-path-intellisense)        | [![Build status](https://ci.appveyor.com/api/projects/status/i39dfbmxa9usjqa1/branch/master?svg=true)](https://ci.appveyor.com/project/apercova/atom-path-intellisense/branch/master) |
+| Linux | MacOS | Windows  |
+|-------|---------------|----------|
+| [![CircleCI](https://circleci.com/gh/apercova/atom-path-intellisense.svg?style=svg)](https://circleci.com/gh/apercova/atom-path-intellisense) | [![Build Status](https://travis-ci.org/apercova/atom-path-intellisense.svg?branch=master)](https://travis-ci.org/apercova/atom-path-intellisense)        | [![Build status](https://ci.appveyor.com/api/projects/status/i39dfbmxa9usjqa1/branch/master?svg=true)](https://ci.appveyor.com/project/apercova/atom-path-intellisense/branch/master) |
 
 ## Features
 - Provides path suggestions based on typed path and context.
