@@ -90,3 +90,9 @@ jobs:
         command: ./build-package.sh
     # On MacOS:
     # - run: caffeinate -s build-package.sh
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build_beta
+      - build_stable
