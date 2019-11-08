@@ -9,9 +9,9 @@ const getSuggestions = (provider, editor) => {
   const end = cursor.getBufferPosition();
   const prefix = editor.getTextInRange([start, end]);
   const request = {
-    editor: editor,
-    bufferPosition: end,
-    scopeDescriptor: cursor.getScopeDescriptor(),
+    'editor': editor,
+    'bufferPosition': end,
+    'scopeDescriptor': cursor.getScopeDescriptor(),
     prefix
   };
   return provider.getSuggestions(request);
