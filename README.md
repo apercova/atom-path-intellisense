@@ -21,7 +21,7 @@ Autocomplete provider based on atom [autocomplete-plus](https://atom.io/packages
   **` Note to developers `**
   > `If you find any selector combination that's missing or can improve this package make a PR with your add to allowed-scopes configuration setting.`  
 - Escaping of single and double quotes is allowed for files and directories.
-- Path suggestions mechanism relies on providers for appropriate grammar and selectors. Default path providers are described below.
+- Path suggestions mechanism relies on providers for appropriate grammar and selectors.
 
 ## Providers
 ### Default Providers :dart:
@@ -53,7 +53,20 @@ Decoupling path suggestions mechanism from autocomplete-plus provider API gives 
 
 > We refer as extended providers to providers targeted to a specific language or more specific scope selectors and context.
 
-See more of [extended providers ...](https://github.com/apercova/atom-path-intellisense/blob/master/EXTENDED_PROVIDERS.md)  
+### Node.js path provider _`Extended`_
+[Node.js](nodejs.org/) path provider gives suggestions for Node.js module imports.  
+##### :muscle: **_Features_**
+- It's enabled only at `.source.js .string.quoted` scope selector.
+- It's enabled only at `require()` and ES6 module `import` statements.
+- Provides suggestions for Node.js built-in modules, local modules on project `node_modules` directory and modules relative to current file.
+- Filters JavaScript files by `.js` extension.
+- Removes file extension at selecting any suggestion.
+- Gets complemented by _Current file relative path provider_ provider on ES6 module `import` statements for relative paths. Eg. `import settings from './config/settings.js'`.
+- Gets complemented by _Default path providers_ for path suggestions on broader scopes.
+
+![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/node_provider.gif)
+
+> ##### See more of [extended providers ...](https://github.com/apercova/atom-path-intellisense/blob/master/EXTENDED_PROVIDERS.md)  
 
 ## Installation
 Install from atom´s **_settings/packages_** tab or run following command on a terminal:
