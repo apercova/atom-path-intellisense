@@ -1,5 +1,5 @@
-const consts = require('../lib/config/consts'),
-  config = require('../lib/config/config'),
+const config = require('../lib/config/config'),
+  consts = require('../lib/config/consts'),
   AtomPathIntellisenseImpl = require('../lib/atom-path-intellisense-impl');
 
 describe(consts['PACKAGE_NAME'], () => {
