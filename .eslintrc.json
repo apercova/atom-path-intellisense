@@ -18,13 +18,14 @@
         "SharedArrayBuffer": "readonly"
     },
     "parserOptions": {
-        "ecmaVersion": 6,
+        "ecmaVersion": 2018,
         "sourceType": "module"
     },
     "rules": {
         "indent": ["error",2],
         "max-len": ["error", { "code": 120, "tabWidth": 2 }],
         "quotes": ["error", "single", { "avoidEscape": true }],
+        "quote-props": ["error", "always"],
         "semi": ["error","never"],
         "eqeqeq": ["error","always"],
         "no-alert": "error",
