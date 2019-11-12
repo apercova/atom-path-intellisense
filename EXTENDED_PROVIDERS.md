@@ -20,12 +20,11 @@ An extended provider has to be in compliance with the following:
 ### Node.js path provider _`Extended`_
 [Node.js](nodejs.org/) path provider gives suggestions for Node.js module imports.  
 ##### :muscle: **_Features_**
-- It's enabled only at `.source.js .string.quoted` scope selector.
-- It's enabled only at `require()` and ES6 module `import` statements.
-- Provides suggestions for Node.js built-in modules, local modules on project `node_modules` directory and modules relative to current file.
+- It's enabled on `JavaScript`, `CoffeeScript` and `TypeScript` files at `.string.quoted` scope selector.
+- Supports both `require()` and ES6 module `import` statements.
+- Provides suggestions for Node.js built-in modules, local modules (_on project_ `node_modules` _directory_) and modules relative to current file.
 - Filters JavaScript files by `.js` extension.
 - Removes file extension at selecting any suggestion.
-- Gets complemented by _Current file relative path provider_ provider on ES6 module `import` statements for relative paths. Eg. `import settings from './config/settings.js'`.
-- Gets complemented by _Default path providers_ for path suggestions on broader scopes.
+- Is complemented by _Default path providers_ for path suggestions on broader scopes.
 
 ![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/node_provider.gif)
