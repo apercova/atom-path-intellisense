@@ -75,21 +75,11 @@ Install from atom´s **_settings/packages_** tab or run following command on a t
 
 ## Configuration
 This package exports following configuration settings to **` config.cson `** file:  
-##### `manual-suggest`
-If enabled (**recomended**), suggestions are provided by pressing `ctrl + space `. Uncheck to get suggestions at typing.  
-- _Type:_     `boolean`
-- _Default:_  `true`
-
-##### `scope-descriptors`
-[Scope selectors](https://flight-manual.atom.io/behind-atom/sections/scoped-settings-scopes-and-scope-descriptors/) (__can be comma-  separated__) for which suggestions are shown. Apply to current file's relative-path suggestion providers. Other providers specify more specific selectors.  
+##### `allowed-scopes`
+[Scope selectors](https://flight-manual.atom.io/behind-atom/sections/scoped-settings-scopes-and-scope-descriptors/) (__can be comma-  separated__) for which suggestions are shown. Apply to default suggestion providers. Other providers specify more specific selectors.  
 See: [Scope Selectors Reference](https://flight-manual.atom.io/behind-atom/sections/scoped-settings-scopes-and-scope-descriptors/#scope-selectors)  
 - _Type:_     `string`
 - _Default:_  `'.source .string, .source.css.scss, .source.shell, .text .string, .text.html.basic'`
-
-##### `provider-strategy-all`
-If enabled, All suitable providers that can resolve suggestions are called __(a bit lower operation)__.
-- _Type:_     `boolean`
-- _Default:_  `false`
 
 ##### `enable-debug`
 Enable / disable debug options. Note that Atom's dev mode `$ atom --dev .` overrides this setting.
@@ -97,6 +87,24 @@ Enable / disable debug options. Note that Atom's dev mode `$ atom --dev .` overr
 - _Default:_
   - `true` if Atom's dev mode `$ atom --dev .` is enabled.
   - `false` otherwise.
+
+##### `manual-suggest`
+If enabled (**recomended**), suggestions are provided by pressing `ctrl + space `. Uncheck to get suggestions at typing.  
+- _Type:_     `boolean`
+- _Default:_  `true`
+
+##### `provider-strategy-all`
+If enabled, All suitable providers that can resolve suggestions are called __(a bit lower operation)__.
+- _Type:_     `boolean`
+- _Default:_  `false`
+
+##### `root-base-path`
+Path for root dir on relative paths `/`.  
+Special values are: `system` targeting to FileSystem root dir and default value `project` targeting to project root dir.  
+> Windows and Unix paths are accepted depending on OS.  
+> On Windows, absolute unix path `/` is resolved to system partition: `C:` in most cases. Eg: `/Windows/` is resolved to `C:\\Windows`.
+- _Type:_     `string`
+- _Default:_  `project`
 
 > Example of _config.cson_:  
 ```cson
