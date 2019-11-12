@@ -94,7 +94,7 @@ If enabled (**recomended**), suggestions are provided by pressing `ctrl + space 
 - _Default:_  `true`
 
 ##### `provider-strategy-all`
-If enabled, All suitable providers that can resolve suggestions are called __(a bit lower operation)__.
+If enabled, All suitable providers that can resolve suggestions are called with no priority consideration. __(A bit lower operation)__.
 - _Type:_     `boolean`
 - _Default:_  `false`
 
