@@ -82,7 +82,8 @@ See: [Scope Selectors Reference](https://flight-manual.atom.io/behind-atom/secti
 - _Default:_  `'.source .string, .source.css.scss, .source.shell, .text .string, .text.html.basic'`
 
 ##### `enable-debug`
-Enable / disable debug options. Note that Atom's dev mode `$ atom --dev .` overrides this setting.
+Enable / disable debug options.  
+> Atom's dev mode `$ atom --dev .` overrides this setting.
 - _Type:_     `boolean`
 - _Default:_
   - `true` if Atom's dev mode `$ atom --dev .` is enabled.
