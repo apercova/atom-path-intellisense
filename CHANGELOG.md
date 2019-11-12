@@ -4,6 +4,7 @@
 ### 1.2.1
 - Improved matching algorithm for Node.js provider, included multiline ES6 import statements.
 - Included `.source.ts` and `.source.coffee` grammar selectors on Node.js provider.
+- Added support for configurable root dir for relative paths. 
 
 ### 1.2.0
 - New algorithm for iterative path search.
