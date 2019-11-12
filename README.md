@@ -38,9 +38,9 @@ Default providers are the very basic path suggestion providers on this package g
 #### :muscle: **_Features_**
 - Works out-of-the-box on allowed scope selectors.
 - Provides suggestions for paths relative to current file path.
-- Relative suggestions are shown by typing self `./` or parent `../` directories.
+- Suggestions for paths relative to current file are shown by typing self `./` or parent `../` directories.
 - Suggestions for paths relative to user's home directory are shown by typing: `~/`.
-- Suggestions for paths relative to current project directory are shown by typing forward slash: `/`.
+- Suggestions for absulute paths are shown by typing forward slash: `/` targeting to base path configured within `root-base-path` setting.
   > When not in a project, suggestions fallback to FileSystem root directory shown files with appropriate permisions.
 
 ![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/filepath_rel_provider.gif)  
