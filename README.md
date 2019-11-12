@@ -27,17 +27,10 @@ Autocomplete provider based on atom [autocomplete-plus](https://atom.io/packages
 ### Default Providers :dart:
 Default providers are the very basic path suggestion providers on this package given path suggestions for paths relative to current file and working out of the box on all allowed scopes.
 
-### Current file path provider _`Default`_
-#### :muscle: **_Features_**
-- Works out-of-the-box on allowed scope selectors.
-- Provides suggestions for current file path.
-
-![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/filepath_provider.gif)  
-
 ### Current file relative path provider _`Default`_
 #### :muscle: **_Features_**
-- Works out-of-the-box on allowed scope selectors.
 - Provides suggestions for paths relative to current file path.
+- Works out-of-the-box on allowed scope selectors.
 - Suggestions for paths relative to current file are shown by typing self `./` or parent `../` directories.
 - Suggestions for paths relative to user's home directory are shown by typing: `~/`.
 - Suggestions for absulute paths are shown by typing forward slash: `/` targeting to base path configured within `root-base-path` setting.
@@ -46,6 +39,13 @@ Default providers are the very basic path suggestion providers on this package g
 ![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/filepath_rel_provider.gif)  
 
 ![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/filepath_rel_provider_home.gif)  
+
+### Current file path provider _`Default`_
+#### :muscle: **_Features_**
+- Provides suggestions for current file path.
+- Works on following scope selectors: `.string.quoted', '.text .string', '.text.html.basic'`.
+
+![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/filepath_provider.gif)  
 
 ### [Extended Providers](https://github.com/apercova/atom-path-intellisense/blob/master/EXTENDED_PROVIDERS.md) ❤
 Atom-path-intellisense is not only based on default providers.
