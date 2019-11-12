@@ -83,7 +83,7 @@ See: [Scope Selectors Reference](https://flight-manual.atom.io/behind-atom/secti
 
 ##### `enable-debug`
 Enable / disable debug options.  
-> Atom's dev mode `$ atom --dev .` overrides this setting.
+> Atom's dev mode `$ atom --dev .` overrides this setting as `true`.
 - _Type:_     `boolean`
 - _Default:_
   - `true` if Atom's dev mode `$ atom --dev .` is enabled.
