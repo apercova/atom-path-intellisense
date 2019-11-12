@@ -100,7 +100,9 @@ If enabled, All suitable providers that can resolve suggestions are called __(a 
 
 ##### `root-base-path`
 Path for root dir on relative paths `/`.  
-Special values are: `system` targeting to FileSystem root dir and default value `project` targeting to project root dir.  
+Special values are:  
+- `system`: Targets to FileSystem root dir.
+- `project`: Targets to current project root dir.  
 > Windows and Unix paths are accepted depending on OS.  
 > On Windows, absolute unix path `/` is resolved to system partition: `C:` in most cases. Eg: `/Windows/` is resolved to `C:\\Windows`.
 - _Type:_     `string`
