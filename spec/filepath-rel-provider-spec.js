@@ -1,21 +1,8 @@
-const process = require('process'),
+const consts = require('../lib/config/consts'),
+  utils = require('./utils'),
   path = require('path'),
-  consts = require('../lib/config/consts'),
+  process = require('process'),
   selectors = require('atom-selectors-plus');
-
-const getSuggestions = (provider, editor) => {
-  const cursor = editor.getLastCursor();
-  const start = cursor.getBeginningOfCurrentWordBufferPosition();
-  const end = cursor.getBufferPosition();
-  const prefix = editor.getTextInRange([start, end]);
-  const request = {
-    editor: editor,
-    bufferPosition: end,
-    scopeDescriptor: cursor.getScopeDescriptor(),
-    prefix
-  };
-  return provider.getSuggestions(request);
-};
 
 describe(consts['PACKAGE_NAME'], () => {
   let [editor, provider] = [];
@@ -29,7 +16,7 @@ describe(consts['PACKAGE_NAME'], () => {
 
     waitsForPromise(() =>
       Promise.all([
-        atom.workspace.open(path.join(process.cwd(), 'assets', 'files', 'sample.js')).then(e => editor = e),
+        atom.workspace.open(path.join(process.cwd(), 'spec', '_assets', 'files', 'sample.js')).then(e => editor = e),
         atom.packages.activatePackage('language-javascript'),
         atom.packages.activatePackage('language-xml'),
         atom.packages.activatePackage('autocomplete-plus'),
@@ -52,24 +39,6 @@ describe(consts['PACKAGE_NAME'], () => {
     expect(validScopes).toEqual(true);
   });
 
-  it('can resolve filepath suggestions', () => {
-    editor.setText("import fs from '';");
-    editor.setCursorBufferPosition([0, 16]);
-    expect(editor.getTextInBufferRange([[0, 0], editor.getLastCursor().getBufferPosition()])).toEqual(
-      "import fs from '"
-    );
-
-    waitsForPromise(() =>
-      getSuggestions(provider, editor).then(suggestions => {
-        expect(suggestions).toBeInstanceOf(Array);
-        expect(suggestions).toHaveLength(3);
-        expect(suggestions[0].displayText).toEqual('../');
-        expect(suggestions[1].displayText).toEqual('sample.js');
-        expect(suggestions[2].displayText).toEqual('sample.xml');
-      })
-    );
-  });
-
   it('can resolve filepath-relative suggestions (./)', () => {
     editor.setText("import fs from './';");
     editor.setCursorBufferPosition([0, 18]);
@@ -78,12 +47,14 @@ describe(consts['PACKAGE_NAME'], () => {
     );
 
     waitsForPromise(() =>
-      getSuggestions(provider, editor).then(suggestions => {
+      utils.getSuggestions(provider, editor).then(suggestions => {
         expect(suggestions).toBeInstanceOf(Array);
-        expect(suggestions).toHaveLength(3);
+        expect(suggestions).toHaveLength(5);
         expect(suggestions[0].displayText).toEqual('../');
-        expect(suggestions[1].displayText).toEqual('sample.js');
-        expect(suggestions[2].displayText).toEqual('sample.xml');
+        expect(suggestions[1].displayText).toEqual('sample.coffee');
+        expect(suggestions[2].displayText).toEqual('sample.js');
+        expect(suggestions[3].displayText).toEqual('sample.ts');
+        expect(suggestions[4].displayText).toEqual('sample.xml');
       })
     );
   });
@@ -96,7 +67,7 @@ describe(consts['PACKAGE_NAME'], () => {
     );
 
     waitsForPromise(() =>
-      getSuggestions(provider, editor).then(suggestions => {
+      utils.getSuggestions(provider, editor).then(suggestions => {
         expect(suggestions).toBeInstanceOf(Array);
         expect(suggestions).toHaveLength(3);
         expect(suggestions[0].displayText).toEqual('../');
@@ -114,7 +85,7 @@ describe(consts['PACKAGE_NAME'], () => {
     );
 
     waitsForPromise(() =>
-      getSuggestions(provider, editor).then(suggestions => {
+      utils.getSuggestions(provider, editor).then(suggestions => {
         expect(suggestions).toBeInstanceOf(Array);
         expect(suggestions).toHaveLength(3);
         expect(suggestions[0].displayText).toEqual('../');
@@ -127,7 +98,7 @@ describe(consts['PACKAGE_NAME'], () => {
   it('can resolve on xml files', () => {
     let xmlEditor;
     waitsForPromise(() =>
-      atom.workspace.open(path.join(process.cwd(), 'assets', 'files', 'sample.xml')).then(e => {
+      atom.workspace.open(path.join(process.cwd(), 'spec', '_assets', 'files', 'sample.xml')).then(e => {
         xmlEditor = e;
         xmlEditor.setText('<root path="./"></root>');
         xmlEditor.setCursorBufferPosition([0, 14]);
@@ -144,12 +115,14 @@ describe(consts['PACKAGE_NAME'], () => {
     );
 
     waitsForPromise(() =>
-      getSuggestions(provider, xmlEditor).then(suggestions => {
+      utils.getSuggestions(provider, xmlEditor).then(suggestions => {
         expect(suggestions).toBeInstanceOf(Array);
-        expect(suggestions).toHaveLength(3);
+        expect(suggestions).toHaveLength(5);
         expect(suggestions[0].displayText).toEqual('../');
-        expect(suggestions[1].displayText).toEqual('sample.js');
-        expect(suggestions[2].displayText).toEqual('sample.xml');
+        expect(suggestions[1].displayText).toEqual('sample.coffee');
+        expect(suggestions[2].displayText).toEqual('sample.js');
+        expect(suggestions[3].displayText).toEqual('sample.ts');
+        expect(suggestions[4].displayText).toEqual('sample.xml');
       })
     );
   });

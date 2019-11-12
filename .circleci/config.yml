@@ -17,11 +17,6 @@ jobs:
     # languages see https://circleci.com/docs/2.0/circleci-images/
     docker:
     - image: circleci/node:latest
-    branches:
-      only:
-        - master
-        - atom-ci
-        - release-1.2.0
     steps:
     - checkout
     - run:
@@ -43,14 +38,10 @@ jobs:
     - run:
         name: Run package tests on stable channel
         command: ./build-package.sh
-    # On MacOS:
-    # - run: caffeinate -s build-package.sh
         environment:
           ATOM_CHANNEL: "stable"
     - run:
         name: Run package tests on beta channel
         command: ./build-package.sh
-    # On MacOS:
-    # - run: caffeinate -s build-package.sh
         environment:
           ATOM_CHANNEL: "beta"
