@@ -65,7 +65,11 @@ Decoupling path suggestions mechanism from autocomplete-plus provider API gives 
 
 ![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/node_provider.gif)
 
-> ##### See more of [extended providers ...](https://github.com/apercova/atom-path-intellisense/blob/master/EXTENDED_PROVIDERS.md)  
+#### List of _`Extended`_ providers:
+- [Node.js (https://nodejs.org)](https://nodejs.org)
+- [Less (http://lesscss.org)](http://lesscss.org)
+
+> #### See more of [extended providers ..](https://github.com/apercova/atom-path-intellisense/blob/master/EXTENDED_PROVIDERS.md)  
 
 ## Installation
 Install from atom´s **_settings/packages_** tab or run following command on a terminal:
@@ -114,10 +118,11 @@ Special values are:
 ```cson
 "*":
   "atom-path-intellisense":
-    "allowed-scopes": ".source .string, .source.shell, .text .string, .text.html.basic"
+    "allowed-scopes": ".source .string, .source.css.scss, .source.shell, .text .string, .text.html.basic"
     "enable-debug": false
     "manual-suggest": true
     "provider-strategy-all": false
+    "root-base-path": "project"
 ```
 ## Acknowledgements :trophy:
 - Scope selectors matching features are based on [`Atom`](https://github.com/atom) [`selectors.js`](https://github.com/atom/atom/blob/master/src/selectors.js).
