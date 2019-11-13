@@ -26,14 +26,13 @@ Gives path suggestions for less `@import` statements.
 
 ## Development
 An extended provider has to be in compliance with the following:
-- Extend base class `BasePathProvider`.  
+- Extend base class `BasePathProvider`.
 - Have following instance variables:
   - id
   - priority
   - scopeSelector
   - formatter (_optional_). Defaults to `new DefaultFormatter({ .. conf });`
   - fileExtFilter (_optional_). Defaults to empty Array.  
-
 - Implement following functions:
   - `canResolve()`
   - `resolve()`
@@ -41,6 +40,6 @@ An extended provider has to be in compliance with the following:
   - `deactivate`. (_optional_)  
 
 - Optionally use a custom formatter. Eg. to give more information on suggestions.
-  Custom formatters have to be in compliance with the following:  
-  - Extend base class `BaseFormatter`.  
-  - Implement `format()` function that is passed raw suggestions.
+  Custom formatters have to be in compliance with the following:
+  - Extend base class `BaseFormatter`.
+  - Implement `format()` function that is passed raw suggestions.  
