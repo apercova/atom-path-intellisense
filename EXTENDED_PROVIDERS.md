@@ -27,13 +27,13 @@ Gives path suggestions for less `@import` statements.
 ## Development
 An extended provider has to be in compliance with the following:
 - Extend base class `BasePathProvider`.
-- Have following instance variables:
+- Override following `BasePathProvider` instance variables:
   - id
   - priority
   - scopeSelector
   - formatter (_optional_). Defaults to `new DefaultFormatter({ .. conf });`
   - fileExtFilter (_optional_). Defaults to empty Array.  
-- Implement following functions:
+- Implement following `BasePathProvider` functions:
   - `canResolve()`
   - `resolve()`
   - `activate`. (_optional_)
