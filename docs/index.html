@@ -131,26 +131,19 @@
 </blockquote>
 </li>
 <li>Escaping of single and double quotes is allowed for files and directories.</li>
-<li>Path suggestions mechanism relies on providers for appropriate grammar and selectors. Default path providers are described below.</li>
+<li>Path suggestions mechanism relies on providers for appropriate grammar and selectors.</li>
 </ul>
 <h2>Providers</h2>
 <h3>Default Providers :dart:</h3>
 <p>Default providers are the very basic path suggestion providers on this package given path suggestions for paths relative to current file and working out of the box on all allowed scopes.</p>
-<h3>Current file path provider <em><code>Default</code></em></h3>
-<h4>:muscle: <strong><em>Features</em></strong></h4>
-<ul>
-<li>Works out-of-the-box on allowed scope selectors.</li>
-<li>Provides suggestions for current file path.</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/filepath_provider.gif" alt=""></p>
 <h3>Current file relative path provider <em><code>Default</code></em></h3>
 <h4>:muscle: <strong><em>Features</em></strong></h4>
 <ul>
-<li>Works out-of-the-box on allowed scope selectors.</li>
 <li>Provides suggestions for paths relative to current file path.</li>
-<li>Relative suggestions are shown by typing self <code>./</code> or parent <code>../</code> directories.</li>
+<li>Works out-of-the-box on allowed scope selectors.</li>
+<li>Suggestions for paths relative to current file are shown by typing self <code>./</code> or parent <code>../</code> directories.</li>
 <li>Suggestions for paths relative to user's home directory are shown by typing: <code>~/</code>.</li>
-<li>Suggestions for paths relative to current project directory are shown by typing forward slash: <code>/</code>.
+<li>Suggestions for absulute paths are shown by typing forward slash: <code>/</code> targeting to base path configured within <code>root-base-path</code> setting.
 <blockquote>
 <p>When not in a project, suggestions fallback to FileSystem root directory shown files with appropriate permisions.</p>
 </blockquote>
@@ -158,40 +151,52 @@
 </ul>
 <p><img src="https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/filepath_rel_provider.gif" alt=""></p>
 <p><img src="https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/filepath_rel_provider_home.gif" alt=""></p>
+<h3>Current file path provider <em><code>Default</code></em></h3>
+<h4>:muscle: <strong><em>Features</em></strong></h4>
+<ul>
+<li>Provides suggestions for current file path.</li>
+<li>Works on following scope selectors: <code>.string.quoted', '.text .string', '.text.html.basic'</code>.</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/filepath_provider.gif" alt=""></p>
 <h3><a href="https://github.com/apercova/atom-path-intellisense/blob/master/EXTENDED_PROVIDERS.md">Extended Providers</a> ❤</h3>
 <p>Atom-path-intellisense is not only based on default providers.
 Decoupling path suggestions mechanism from autocomplete-plus provider API gives the advantage of writing extended providers that cover more specific contexts and can be formatted in their own way.</p>
 <blockquote>
 <p>We refer as extended providers to providers targeted to a specific language or more specific scope selectors and context.</p>
 </blockquote>
-<p>See more of <a href="https://github.com/apercova/atom-path-intellisense/blob/master/EXTENDED_PROVIDERS.md">extended providers ...</a></p>
+<h3>Node.js path provider <em><code>Extended</code></em></h3>
+<p><a href="nodejs.org/">Node.js</a> path provider gives suggestions for Node.js module imports.</p>
+<h5>:muscle: <strong><em>Features</em></strong></h5>
+<ul>
+<li>It's enabled on <code>JavaScript</code>, <code>CoffeeScript</code> and <code>TypeScript</code> files at <code>.string.quoted</code> scope selector.</li>
+<li>Supports both <code>require()</code> and ES6 module <code>import</code> statements.</li>
+<li>Provides suggestions for Node.js built-in modules, local modules (<em>on project</em> <code>node_modules</code> <em>directory</em>) and modules relative to current file.</li>
+<li>Filters JavaScript files by <code>.js</code> extension.</li>
+<li>Removes file extension at selecting any suggestion.</li>
+<li>Is complemented by <em>Default path providers</em> for path suggestions on broader scopes.</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/node_provider.gif" alt=""></p>
+<blockquote>
+<h5>See more of <a href="https://github.com/apercova/atom-path-intellisense/blob/master/EXTENDED_PROVIDERS.md">extended providers ...</a></h5>
+</blockquote>
 <h2>Installation</h2>
 <p>Install from atom´s <strong><em>settings/packages</em></strong> tab or run following command on a terminal:</p>
 <pre class="prettyprint source lang-bash"><code>  apm install atom-path-intellisense
 </code></pre>
 <h2>Configuration</h2>
 <p>This package exports following configuration settings to <strong><code>config.cson</code></strong> file:</p>
-<h5><code>manual-suggest</code></h5>
-<p>If enabled (<strong>recomended</strong>), suggestions are provided by pressing <code>ctrl + space</code>. Uncheck to get suggestions at typing.</p>
-<ul>
-<li><em>Type:</em>     <code>boolean</code></li>
-<li><em>Default:</em>  <code>true</code></li>
-</ul>
-<h5><code>scope-descriptors</code></h5>
-<p><a href="https://flight-manual.atom.io/behind-atom/sections/scoped-settings-scopes-and-scope-descriptors/">Scope selectors</a> (<strong>can be comma-  separated</strong>) for which suggestions are shown. Apply to current file's relative-path suggestion providers. Other providers specify more specific selectors.<br>
+<h5><code>allowed-scopes</code></h5>
+<p><a href="https://flight-manual.atom.io/behind-atom/sections/scoped-settings-scopes-and-scope-descriptors/">Scope selectors</a> (<strong>can be comma-  separated</strong>) for which suggestions are shown. Apply to default suggestion providers. Other providers specify more specific selectors.<br>
 See: <a href="https://flight-manual.atom.io/behind-atom/sections/scoped-settings-scopes-and-scope-descriptors/#scope-selectors">Scope Selectors Reference</a></p>
 <ul>
 <li><em>Type:</em>     <code>string</code></li>
 <li><em>Default:</em>  <code>'.source .string, .source.css.scss, .source.shell, .text .string, .text.html.basic'</code></li>
 </ul>
-<h5><code>provider-strategy-all</code></h5>
-<p>If enabled, All suitable providers that can resolve suggestions are called <strong>(a bit lower operation)</strong>.</p>
-<ul>
-<li><em>Type:</em>     <code>boolean</code></li>
-<li><em>Default:</em>  <code>false</code></li>
-</ul>
 <h5><code>enable-debug</code></h5>
-<p>Enable / disable debug options. Note that Atom's dev mode <code>$ atom --dev .</code> overrides this setting.</p>
+<p>Enable / disable debug options.</p>
+<blockquote>
+<p>Atom's dev mode <code>$ atom --dev .</code> overrides this setting as <code>true</code>.</p>
+</blockquote>
 <ul>
 <li><em>Type:</em>     <code>boolean</code></li>
 <li><em>Default:</em>
@@ -200,6 +205,37 @@ See: <a href="https://flight-manual.atom.io/behind-atom/sections/scoped-settings
 <li><code>false</code> otherwise.</li>
 </ul>
 </li>
+</ul>
+<h5><code>manual-suggest</code></h5>
+<p>If enabled (<strong>recomended</strong>), suggestions are provided by pressing <code>ctrl + space</code>. Uncheck to get suggestions at typing.</p>
+<ul>
+<li><em>Type:</em>     <code>boolean</code></li>
+<li><em>Default:</em>  <code>true</code></li>
+</ul>
+<h5><code>provider-strategy-all</code></h5>
+<p>If enabled, All suitable providers that can resolve suggestions are called with no priority consideration. <strong>(A bit lower operation)</strong>.</p>
+<ul>
+<li><em>Type:</em>     <code>boolean</code></li>
+<li><em>Default:</em>  <code>false</code></li>
+</ul>
+<h5><code>root-base-path</code></h5>
+<p>Path for root dir on relative paths <code>/</code>.<br>
+Special values are:</p>
+<ul>
+<li><code>system</code>: Targets to FileSystem root dir.</li>
+<li><code>project</code>: Targets to current project root dir.
+<blockquote>
+<p>When not in a project, suggestions fallback to FileSystem root directory shown files with appropriate permisions.</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>Windows and Unix paths are accepted depending on OS.<br>
+On Windows, absolute unix path <code>/</code> is resolved to system partition: <code>C:</code> in most cases. Eg: <code>/Windows/</code> is resolved to <code>C:\\Windows</code>.</p>
+</blockquote>
+<ul>
+<li><em>Type:</em>     <code>string</code></li>
+<li><em>Default:</em>  <code>project</code></li>
 </ul>
 <blockquote>
 <p>Example of <em>config.cson</em>:</p>
@@ -262,7 +298,7 @@ See: <a href="https://flight-manual.atom.io/behind-atom/sections/scoped-settings
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a>
 	
-		on 2019-10-30T19:47:06-06:00
+		on 2019-11-12T17:58:24-06:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

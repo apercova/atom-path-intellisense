@@ -26,7 +26,7 @@ const del = require('del'),
 gulp.task('docs', cb => {
   del('docs/**');
   const config = require('./jsdoc.json');
-  gulp.src(['README.md', './lib/**/*.js'], { read: true }).pipe(jsdoc(config, cb));
+  gulp.src(['README.md', './lib/**/*.js'], { 'read': true }).pipe(jsdoc(config, cb));
 });
 
 /**
@@ -74,25 +74,25 @@ gulp.task('source:lint', () => {
  */
 gulp.task('source:minify', () => {
   gulp
-    .src(['spec/**/*.js'], { allowEmpty: true })
+    .src(['spec/**/*.js'], { 'allowEmpty': true })
     .pipe(
       minify({
-        noSource: true,
-        ext: {
-          src: '.js',
-          min: '.js'
+        'noSource': true,
+        'ext': {
+          'src': '.js',
+          'min': '.js'
         }
       })
     )
     .pipe(gulp.dest('spec/'));
   return gulp
-    .src(['lib/**/*.js'], { allowEmpty: true })
+    .src(['lib/**/*.js'], { 'allowEmpty': true })
     .pipe(
       minify({
-        noSource: true,
-        ext: {
-          src: '.js',
-          min: '.js'
+        'noSource': true,
+        'ext': {
+          'src': '.js',
+          'min': '.js'
         }
       })
     )
