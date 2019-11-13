@@ -24,6 +24,8 @@ Gives path suggestions for less `@import` statements.
 - Removes file extension at selecting any suggestion.
 - Is complemented by _Default path providers_ for path suggestions on broader scopes.
 
+![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/lesscss_provider.gif)
+
 ## Development
 An extended provider has to be in compliance with the following:
 - Extend base class `BasePathProvider`.
