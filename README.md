@@ -65,11 +65,11 @@ Decoupling path suggestions mechanism from autocomplete-plus provider API gives 
 
 ![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/providers/node_provider.gif)
 
-#### List of _`Extended`_ providers:
+#### There are _`Extended`_ providers for:
 - [Node.js (https://nodejs.org)](https://nodejs.org)
 - [Less (http://lesscss.org)](http://lesscss.org)
 
-> #### See more of [extended providers ..](https://github.com/apercova/atom-path-intellisense/blob/master/EXTENDED_PROVIDERS.md)  
+> #### See complete [extended providers features ..](https://github.com/apercova/atom-path-intellisense/blob/master/EXTENDED_PROVIDERS.md)  
 
 ## Installation
 Install from atom´s **_settings/packages_** tab or run following command on a terminal:
