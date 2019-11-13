@@ -24,7 +24,7 @@ Gives path suggestions for less `@import` statements.
 - Removes file extension at selecting any suggestion.
 - Is complemented by _Default path providers_ for path suggestions on broader scopes.
 
-### Development
+## Development
 An extended provider has to be in compliance with the following:
 - Extend base class `BasePathProvider`.  
 - Have following instance variables:
