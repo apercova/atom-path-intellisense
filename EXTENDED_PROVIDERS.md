@@ -4,19 +4,6 @@ Decoupling path suggestions mechanism from autocomplete-plus provider API gives 
 
 > We refer as extended providers to providers targeted to a specific language or more specific scope selectors and context.
 
-An extended provider has to be in compliance with the following:
-- Extend base class `BasePathProvider`.  
-- Implement following methods:
-  - `canResolve()`
-  - `resolve()`
-  - `activate`. (optional)
-  - `deactivate`. (optional)
-- Optionally use a custom formatter. Eg. to trim file extensions.
-  Custom formatters have to be in compliance with the following:  
-  - Extend base class `BaseFormatter`.  
-  - Implement `format` method in order to format raw suggestions.
-
-
 ### [Node.js (https://nodejs.org)](https://nodejs.org) path provider _`Extended`_
 Gives path suggestions for Node.js module imports.
 ##### :muscle: **_Features_**
@@ -36,3 +23,24 @@ Gives path suggestions for less `@import` statements.
 - Filters files by `.css` and `.less` extensions.
 - Removes file extension at selecting any suggestion.
 - Is complemented by _Default path providers_ for path suggestions on broader scopes.
+
+### Development
+An extended provider has to be in compliance with the following:
+- Extend base class `BasePathProvider`.  
+- Have following instance variables:
+  - id
+  - priority
+  - scopeSelector
+  - formatter (_optional_). Defaults to `new DefaultFormatter({ .. conf });`
+  - fileExtFilter (_optional_). Defaults to empty Array.  
+
+- Implement following functions:
+  - `canResolve()`
+  - `resolve()`
+  - `activate`. (_optional_)
+  - `deactivate`. (_optional_)  
+
+- Optionally use a custom formatter. Eg. to give more information on suggestions.
+  Custom formatters have to be in compliance with the following:  
+  - Extend base class `BaseFormatter`.  
+  - Implement `format()` function that is passed raw suggestions.
