@@ -1,6 +1,10 @@
 # Atom-path-Intellisense
 ## CHANGELOG :barber:
 
+### 1.3.0
+- Improved filter strategy for selecting best provider.
+- Added [Less (http://lesscss.org)](http://lesscss.org). extended provider.
+
 ### 1.2.2
 - Fixed bug [#74 configs disappear](https://github.com/apercova/atom-path-intellisense/issues/74)  
 
