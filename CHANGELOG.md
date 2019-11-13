@@ -1,6 +1,10 @@
 # Atom-path-Intellisense
 ## CHANGELOG :barber:
 
+### 1.3.0
+- Improved filter strategy for selecting best provider.
+- Added [Less (http://lesscss.org)](http://lesscss.org). extended provider.
+
 ### 1.2.1
 - Improved matching algorithm for Node.js provider, included multiline ES6 import statements.
 - Included `.source.ts` and `.source.coffee` grammar selectors on Node.js provider.
