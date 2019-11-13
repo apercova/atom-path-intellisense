@@ -53,8 +53,8 @@ Decoupling path suggestions mechanism from autocomplete-plus provider API gives 
 
 > We refer as extended providers to providers targeted to a specific language or more specific scope selectors and context.
 
-### Node.js path provider _`Extended`_
-[Node.js](nodejs.org/) path provider gives suggestions for Node.js module imports.  
+### [Node.js (https://nodejs.org)](https://nodejs.org) path provider _`Extended`_
+Gives path suggestions for Node.js module imports.
 ##### :muscle: **_Features_**
 - It's enabled on `JavaScript`, `CoffeeScript` and `TypeScript` files at `.string.quoted` scope selector.
 - Supports both `require()` and ES6 module `import` statements.
