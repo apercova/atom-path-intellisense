@@ -28,14 +28,14 @@ Gives path suggestions for less `@import` statements.
 
 ## Development
 An extended provider has to be in compliance with the following:
-- Extend base class `BasePathProvider`.
+- Extend base class [`BasePathProvider`](https://github.com/apercova/atom-path-intellisense/blob/master/lib/providers/base-path.provider.js).
 - Override following `BasePathProvider` instance variables:
   - id
   - priority
   - scopeSelector
-  - formatter (_optional_). Defaults to `new DefaultFormatter({ .. conf });`
+  - formatter (_optional_). Defaults to [`new DefaultFormatter({ .. conf });`](https://github.com/apercova/atom-path-intellisense/blob/master/lib/formatters/default.formatter.js)
   - fileExtFilter (_optional_). Defaults to empty Array.  
-- Implement following `BasePathProvider` functions:
+- Override / Implement following `BasePathProvider` functions:
   - `canResolve()`
   - `resolve()`
   - `activate`. (_optional_)
@@ -43,5 +43,5 @@ An extended provider has to be in compliance with the following:
 
 - Optionally use a custom formatter. Eg. to give more information on suggestions.
   Custom formatters have to be in compliance with the following:
-  - Extend base class `BaseFormatter`.
+  - Extend base class [`BaseFormatter`](https://github.com/apercova/atom-path-intellisense/blob/master/lib/formatters/base.formatter.js).
   - Implement `format()` function that is passed raw suggestions.  
