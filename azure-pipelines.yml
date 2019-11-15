@@ -1,0 +1,65 @@
+variables:
+  APM_TEST_PACKAGES: autocomplete-plus
+  ATOM_LINT_WITH_BUNDLED_NODE: true
+
+trigger:
+  branches:
+    include:
+      - '*'
+jobs:
+- job: Linux
+  displayName: Building package on linux:latest
+  pool:
+    vmImage: 'ubuntu-latest'
+  strategy:
+    matrix:
+      stable:
+        ATOM_CHANNEL: 'stable'
+      beta:
+        ATOM_CHANNEL: 'beta'
+    maxParallel: 2 
+  steps:
+  - script: curl -s -O https://raw.githubusercontent.com/atom/ci/master/build-package.sh
+    displayName: 'Downloading build script'
+  - script: chmod u+x build-package.sh
+    displayName: 'Setting permissions'
+  - script: ./build-package.sh
+    displayName: 'Building package'
+    
+- job: Windows
+  displayName: Building package on windows-latest
+  pool:
+    vmImage: 'windows-latest'
+  strategy:
+    matrix:
+      stable:
+        ATOM_CHANNEL: 'stable'
+      beta:
+        ATOM_CHANNEL: 'beta'
+    maxParallel: 2 
+  steps:
+  - script: curl -s -O https://raw.githubusercontent.com/atom/ci/master/build-package.sh
+    displayName: 'Downloading build script'
+  - script: chmod u+x build-package.sh
+    displayName: 'Setting permissions'
+  - script: ./build-package.sh
+    displayName: 'Building package'
+
+- job: MacOs
+  displayName: Building package on macOS-latest
+  pool:
+    vmImage: 'macOS-latest'
+  strategy:
+    matrix:
+      stable:
+        ATOM_CHANNEL: 'stable'
+      beta:
+        ATOM_CHANNEL: 'beta'
+    maxParallel: 2 
+  steps:
+  - script: curl -s -O https://raw.githubusercontent.com/atom/ci/master/build-package.sh
+    displayName: 'Downloading build script'
+  - script: chmod u+x build-package.sh
+    displayName: 'Setting permissions'
+  - script: ./build-package.sh
+    displayName: 'Building package'
