@@ -1,6 +1,9 @@
 # Atom-path-Intellisense
 ## CHANGELOG :barber:
 
+### 1.2.2
+- Fixed bug [#74 configs disappear](https://github.com/apercova/atom-path-intellisense/issues/74)  
+
 ### 1.2.1
 - Improved matching algorithm for Node.js provider, included multiline ES6 import statements.
 - Included `.source.ts` and `.source.coffee` grammar selectors on Node.js provider.
