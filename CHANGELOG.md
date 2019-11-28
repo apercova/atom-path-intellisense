@@ -5,12 +5,9 @@
 - Improved filter strategy for selecting best provider.
 - Added [Less (http://lesscss.org)](http://lesscss.org). extended provider.
 
-<<<<<<< HEAD
 ### 1.2.2
 - Fixed bug [#74 configs disappear](https://github.com/apercova/atom-path-intellisense/issues/74)  
 
-=======
->>>>>>> ca1eded88b8fcf8747a4cdf8c8d9160dae3093e0
 ### 1.2.1
 - Improved matching algorithm for Node.js provider, included multiline ES6 import statements.
 - Included `.source.ts` and `.source.coffee` grammar selectors on Node.js provider.
