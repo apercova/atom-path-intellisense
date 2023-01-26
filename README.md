@@ -1,7 +1,7 @@
 # [atom-path-intellisense](https://atom.io/packages/atom-path-intellisense) [![](https://raw.githubusercontent.com/apercova/imageio/master/atom-path-intellisense/logo/Icon-100.png)](https://atom.io/packages/atom-path-intellisense)
 ## :loudspeaker: Deprecation notice :broken_heart:
 
-Development of `atom-path-intellisense` plug-in has been stop as [github has now ended Atom IDE development](https://github.blog/2022-06-08-sunsetting-atom/).  
+`atom-path-intellisense` plug-in development has been stopped since [github has now ended Atom IDE development](https://github.blog/2022-06-08-sunsetting-atom/).  
 This repo will continue to be available though no further support will be done.  
 I want to say thanks to all of you who gave this a try and a special shout out to contributors.  
 
